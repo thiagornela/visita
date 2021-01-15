@@ -41,86 +41,26 @@ public class MainActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
         configuraLista();
         configuraBotoesMenu();
+
+//        Button teste = findViewById(R.id.item_button_atendimento);
+//        teste.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
+//                intent.putExtra(CHAVE_VISITA, visitaClicada);
+//                startActivity(intent);
+//            }
+//        });
+
     }
 
     private void configuraBotoesMenu() {
-
-        Button b1 = findViewById(R.id.button_adicionar_Colaborador);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Colaborador.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b2 = findViewById(R.id.button_adicionar_ComoNosConheceu);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Como_Nos_Conheceu.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b3 = findViewById(R.id.button_adicionar_Secretaria);
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Secretaria.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b4 = findViewById(R.id.button_adicionar_Situacao);
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Situacao.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b5 = findViewById(R.id.button_adicionar_Tipo_Atendimento);
-        b5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Tipo_Atendimento.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b6 = findViewById(R.id.button_adicionar_Turma);
-        b6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Turma.class);
-                startActivity(intent);
-            }
-        });
-
-        Button b7 = findViewById(R.id.button_adicionar_Turno);
-        b7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Cadastro_Turno.class);
-                startActivity(intent);
-            }
-        });
 
         Button botaoCadastraVisita = findViewById(R.id.button_adicionar_visita);
         botaoCadastraVisita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 vaiParaCadastroVisita();
-            }
-        });
-
-        Button botaoCadastraUnidade = findViewById(R.id.button_adicionar_unidade);
-        botaoCadastraUnidade.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                vaiParaCadastroUnidade();
             }
         });
     }
@@ -130,21 +70,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         listaVisitasView.atualizaVisitas();
     }
-
-//    private void configuraLista() {
-//        ListView listaDeVisitas = findViewById(R.id.lista_visitas_listview);
-//        listaVisitasView.configuraAdapter(listaDeVisitas);
-//        listaDeVisitas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Visita visitaClicada = (Visita) parent.getItemAtPosition(position);
-//                vaiParaEditaVisita(visitaClicada);
-//            }
-//        });
-//        registerForContextMenu(listaDeVisitas);
-//    }
-
-
 
     private void configuraLista() {
         ListView listaDeVisitas = findViewById(R.id.lista_visitas_listview);

@@ -29,13 +29,13 @@ public class VisitaApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        criaAlunosDeTeste();
+        //criaAlunosDeTeste();
+        //criaSituacaoDeTeste();
         criaUnidadeDeTeste();
         criaSecretariaDeTeste();
         criaTipoAtendimentoDeTeste();
         criaColaboradorDeTeste();
         criaComoNosConheceuDeTeste();
-        criaSituacaoDeTeste();
         criaTurmaDeTeste();
         criaTurnoDeTeste();
 
@@ -65,13 +65,6 @@ public class VisitaApplication extends Application {
         dao.salva(Instagram);
     }
 
-    private void criaSituacaoDeTeste() {
-        SituacaoDAO dao = new SituacaoDAO();
-        Situacao matriculado = new Situacao("Matriculado");
-        Situacao aguardando_retorno_da_escola_para = new Situacao("Aguardando retorno da escola para ");
-        dao.salva(matriculado);
-        dao.salva(aguardando_retorno_da_escola_para);
-    }
 
     private void criaColaboradorDeTeste() {
         ColaboradorDAO dao = new ColaboradorDAO();
@@ -105,30 +98,37 @@ public class VisitaApplication extends Application {
         dao.salva(gutierrez);
     }
 
-    String data = "10/01/2021";
 
-    private void criaAlunosDeTeste() {
-        VisitaDAO dao = new VisitaDAO();
-        dao.salva(new Visita(
-                5,
-                "Thiago",
-                "28/05/1990",
-                "Maternal 1",
-                "Manhã",
-                "Rita",
-                "858031",
-                "333",
-                "999",
-                "rita@gmail.com",
-                "Buritis App",
-                "Eliana App",
-                "Telefone App",
-                "Elisana App",
-                "Facebook App",
-                "Matriculado",
-                data
-                ));
-    }
+//    private void criaAlunosDeTeste() {
+//        VisitaDAO dao = new VisitaDAO();
+//        dao.salva(new Visita(
+//                5,
+//                "Thiago",
+//                "28/05/1990",
+//                "Maternal 1",
+//                "Manhã",
+//                "Rita",
+//                "858031",
+//                "333",
+//                "999",
+//                "rita@gmail.com",
+//                "Buritis App",
+//                "Eliana App",
+//                "Telefone App",
+//                "Elisana App",
+//                "Facebook App",
+//                "Matriculado",
+//                data
+//                ));
+//    }
+
+//    private void criaSituacaoDeTeste() {
+//        SituacaoDAO dao = new SituacaoDAO();
+//        Situacao matriculado = new Situacao("Matriculado");
+//        Situacao aguardando_retorno_da_escola_para = new Situacao("Aguardando retorno da escola para ");
+//        dao.salva(matriculado);
+//        dao.salva(aguardando_retorno_da_escola_para);
+//    }
 
 
 }

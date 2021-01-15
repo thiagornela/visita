@@ -1,27 +1,24 @@
 package com.example.cadastrodevisita.cadastro;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.cadastrodevisita.R;
 import com.example.cadastrodevisita.dao.ColaboradorDAO;
 import com.example.cadastrodevisita.dao.ComoNosConheceuDAO;
 import com.example.cadastrodevisita.dao.SecretariaDAO;
-import com.example.cadastrodevisita.dao.SituacaoDAO;
 import com.example.cadastrodevisita.dao.TipoAtendimentoDAO;
 import com.example.cadastrodevisita.dao.TurmaDAO;
 import com.example.cadastrodevisita.dao.TurnoDAO;
@@ -30,7 +27,6 @@ import com.example.cadastrodevisita.dao.VisitaDAO;
 import com.example.cadastrodevisita.model.Colaborador;
 import com.example.cadastrodevisita.model.ComoNosConheceu;
 import com.example.cadastrodevisita.model.Secretaria;
-import com.example.cadastrodevisita.model.Situacao;
 import com.example.cadastrodevisita.model.TipoAtendimento;
 import com.example.cadastrodevisita.model.Turma;
 import com.example.cadastrodevisita.model.Turno;
@@ -48,7 +44,16 @@ public class Cadastro_Visita extends AppCompatActivity {
     private ImageView campoImagemFamilia;
 
     private TextInputLayout campo_nome_crianca;
-    private TextInputLayout campo_data_nascimento;
+    private TextInputLayout campo_dataNascimento_crianca;
+    private AutoCompleteTextView spinnerTurma_crianca;
+    private AutoCompleteTextView spinnerTurno_crianca;
+
+    private Switch switchTem_irmao;
+    private CardView cardview_irmao;
+    private TextInputLayout campo_nome_Irmao;
+    private TextInputLayout campo_dataNascimento_Irmao;
+    private AutoCompleteTextView spinnerTurma_irmao;
+    private AutoCompleteTextView spinnerTurno_irmao;
 
     private TextInputLayout campo_nome_responsavel_1;
     private TextInputLayout campo_cpf_responsavel_1;
@@ -56,6 +61,13 @@ public class Cadastro_Visita extends AppCompatActivity {
     private TextInputLayout campo_telefone_celular_responsavel_1;
     private TextInputLayout campo_email_responsavel_1;
 
+    private TextInputLayout campo_nome_responsavel_2;
+    private TextInputLayout campo_cpf_responsavel_2;
+    private TextInputLayout campo_telefone_fixo_responsavel_2;
+    private TextInputLayout campo_telefone_celular_responsavel_2;
+    private TextInputLayout campo_email_responsavel_2;
+
+    private TextInputLayout campo_data_visita;
     private AutoCompleteTextView spinnerUnidade;
     private final UnidadeDAO unidadeDAO = new UnidadeDAO();
     private AutoCompleteTextView spinnerSecretaria;
@@ -67,14 +79,11 @@ public class Cadastro_Visita extends AppCompatActivity {
     private AutoCompleteTextView spinnerComoNosConheceu;
     private final ComoNosConheceuDAO comoNosConheceuDAO = new ComoNosConheceuDAO();
     private AutoCompleteTextView spinnerSituacao;
-    private final SituacaoDAO situacaoDAO = new SituacaoDAO();
-    private AutoCompleteTextView spinnerTurma;
-    private final TurmaDAO turmaDAO = new TurmaDAO();
-    private AutoCompleteTextView spinnerTurno;
-    private final TurnoDAO turnoDAO = new TurnoDAO();
-
     private TextInputLayout campo_data_situacao_limite;
+    private TextInputLayout campo_observacao;
 
+    private final TurmaDAO turmaDAO = new TurmaDAO();
+    private final TurnoDAO turnoDAO = new TurnoDAO();
     private final VisitaDAO visitaDAO = new VisitaDAO();
     private Visita visita;
 
@@ -84,6 +93,17 @@ public class Cadastro_Visita extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_visita);
         inicializacaoDosCampos();
         carregaVisita();
+
+        switchTem_irmao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchTem_irmao.isChecked())
+                    cardview_irmao.setVisibility(v.VISIBLE);
+                else if(!switchTem_irmao.isChecked())
+                    cardview_irmao.setVisibility(v.GONE);
+            }
+        });
+
         verificaSituacao();
     }
 
@@ -107,7 +127,7 @@ public class Cadastro_Visita extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String situacao_selecionada = spinnerSituacao.getEditableText().toString();
-                if (situacao_selecionada.equals("Aguardando retorno da escola para ")) {
+                if (situacao_selecionada.equals("Contato da escola para ") || situacao_selecionada.equals("Ambientação para ")) {
                     campo_data_situacao_limite.setVisibility(view.VISIBLE);
                 } else
                     campo_data_situacao_limite.setVisibility(view.GONE);
@@ -129,6 +149,8 @@ public class Cadastro_Visita extends AppCompatActivity {
 
     private void preencheCampos() {
         campo_nome_crianca.getEditText().setText(visita.getNome_crianca());
+        campo_dataNascimento_crianca.getEditText().setText(visita.getDataNascimento_crianca());
+       // spinnerTurma_irmao.getAdapter());
     }
 
 //    public void tirarFoto(View view) {
@@ -155,14 +177,18 @@ public class Cadastro_Visita extends AppCompatActivity {
     private void finalizaFormulario() {
         preencheVisita();
         visitaDAO.salva(visita);
+        Toast.makeText(this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     private void preencheVisita() {
         String nome = campo_nome_crianca.getEditText().getText().toString();
-        String data_nascimento = campo_data_nascimento.getEditText().getText().toString();
-        String turma = spinnerTurma.getEditableText().toString();
-        String turno = spinnerTurno.getEditableText().toString();
+        String data_nascimento = campo_dataNascimento_crianca.getEditText().getText().toString();
+        String turma = spinnerTurma_crianca.getEditableText().toString();
+        String turno = spinnerTurno_crianca.getEditableText().toString();
+
+        if(switchTem_irmao.isChecked())
+            visita.setTemIrmao(true);
 
         String nome_responsavel_1 = campo_nome_responsavel_1.getEditText().getText().toString();
         String email_responsavel_1 = campo_email_responsavel_1.getEditText().getText().toString();
@@ -176,12 +202,13 @@ public class Cadastro_Visita extends AppCompatActivity {
         String colaborador = spinnerColaborador.getEditableText().toString();
         String comoNosConheceu = spinnerComoNosConheceu.getEditableText().toString();
         String situacao = spinnerSituacao.getEditableText().toString();
+        String dataLimite = campo_data_situacao_limite.getEditText().getText().toString();
 
         //visita.setFoto_familia(imagemFamilia);
         visita.setNome_crianca(nome);
-        visita.setData_nascimento(data_nascimento);
-        visita.setTurma(turma);
-        visita.setTurno(turno);
+        visita.setDataNascimento_crianca(data_nascimento);
+        visita.setTurma_crianca(turma);
+        visita.setTurno_crianca(turno);
 
         visita.setNome_responsavel_1(nome_responsavel_1);
         visita.setEmail_responsavel_1(email_responsavel_1);
@@ -195,6 +222,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         visita.setColaborador(colaborador);
         visita.setComoNosConheceu(comoNosConheceu);
         visita.setSituacao(situacao);
+        visita.setDataLimite(dataLimite);
 
         //String dataAtual = RetornaDataAtual.dataAtual();
         //visita.setDataDoCadastro(dataAtual);
@@ -202,25 +230,44 @@ public class Cadastro_Visita extends AppCompatActivity {
     }
 
     private void inicializacaoDosCampos() {
-        campo_nome_crianca = findViewById(R.id.nome_crianca);
-        campo_data_nascimento = findViewById(R.id.data_nascimento);
-        spinnerTurma = findViewById(R.id.spinner_Turma);
-        spinnerTurno = findViewById(R.id.spinner_Turno);
+        campo_nome_crianca = findViewById(R.id.formulario_nome_crianca);
+        campo_dataNascimento_crianca = findViewById(R.id.formulario_data_nascimento_crianca);
+        spinnerTurma_crianca = findViewById(R.id.spinner_Turma_crianca);
+        spinnerTurno_crianca = findViewById(R.id.spinner_Turno_crianca);
 
-        campo_nome_responsavel_1 = findViewById(R.id.nome_responsavel_1);
+        ArrayAdapter<Turma> arrayAdapterTurma = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turmaDAO.todos());
+        spinnerTurma_crianca.setAdapter(arrayAdapterTurma);
+        ArrayAdapter<Turno> arrayAdapterTurno = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turnoDAO.todos());
+        spinnerTurno_crianca.setAdapter(arrayAdapterTurno);
+
+        switchTem_irmao = findViewById(R.id.switch_tem_irmao);
+        cardview_irmao = findViewById(R.id.cardview_irmao);
+        campo_nome_Irmao = findViewById(R.id.formulario_nome_irmao);
+        campo_dataNascimento_Irmao = findViewById(R.id.formulario_data_nascimento_irmao);
+//        spinnerTurma_irmao.setAdapter(arrayAdapterTurma);
+//        spinnerTurno_irmao.setAdapter(arrayAdapterTurno);
+
+        campo_nome_responsavel_1 = findViewById(R.id.formulario_nome_responsavel_1);
         campo_email_responsavel_1 = findViewById(R.id.formulario_email_responsavel1);
-        campo_telefone_fixo_responsavel_1 = findViewById(R.id.fixo_responsavel1);
-        campo_telefone_celular_responsavel_1 = findViewById(R.id.celular_responsavel1);
-        campo_cpf_responsavel_1 = findViewById(R.id.cpf_responsavel1);
+        campo_telefone_fixo_responsavel_1 = findViewById(R.id.formulario_fixo_responsavel1);
+        campo_telefone_celular_responsavel_1 = findViewById(R.id.formulario_celular_responsavel1);
+        campo_cpf_responsavel_1 = findViewById(R.id.formulario_cpf_responsavel1);
 
+        campo_nome_responsavel_2 = findViewById(R.id.formulario_nome_responsavel_2);
+        campo_email_responsavel_2 = findViewById(R.id.formulario_email_responsavel_2);
+        campo_telefone_fixo_responsavel_2 = findViewById(R.id.formulario_fixo_responsavel_2);
+        campo_telefone_celular_responsavel_2 = findViewById(R.id.formulario_celular_responsavel_2);
+        campo_cpf_responsavel_2 = findViewById(R.id.formulario_cpf_responsavel_2);
+
+        campo_data_visita = findViewById(R.id.formulario_data_visita);
         spinnerUnidade = findViewById(R.id.spinner_Unidade);
         spinnerSecretaria = findViewById(R.id.spinner_Secretaria);
         spinnerTipoAtendimento = findViewById(R.id.spinner_TipoAtendimento);
         spinnerColaborador = findViewById(R.id.spinner_Colaborador);
         spinnerComoNosConheceu = findViewById(R.id.spinner_ComoNosConheceu);
         spinnerSituacao = findViewById(R.id.spinner_Situacao);
-
-        campo_data_situacao_limite = findViewById(R.id.data_limite_situacao);
+        campo_data_situacao_limite = findViewById(R.id.formulario_data_limite_situacao);
+        campo_observacao = findViewById(R.id.formulario_observacao);
 
         ArrayAdapter<Unidade> arrayAdapterUnidade = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, unidadeDAO.todos());
         spinnerUnidade.setAdapter(arrayAdapterUnidade);
@@ -232,12 +279,10 @@ public class Cadastro_Visita extends AppCompatActivity {
         spinnerColaborador.setAdapter(arrayAdapterColaborador);
         ArrayAdapter<ComoNosConheceu> arrayAdapterComoNosConheceu = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, comoNosConheceuDAO.todos());
         spinnerComoNosConheceu.setAdapter(arrayAdapterComoNosConheceu);
-        ArrayAdapter<Situacao> arrayAdapterSituacao = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, situacaoDAO.todos());
+        ArrayAdapter<String> arrayAdapterSituacao = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item,
+                getResources().getStringArray(R.array.array_tipos_situacao));
         spinnerSituacao.setAdapter(arrayAdapterSituacao);
-        ArrayAdapter<Turma> arrayAdapterTurma = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turmaDAO.todos());
-        spinnerTurma.setAdapter(arrayAdapterTurma);
-        ArrayAdapter<Turno> arrayAdapterTurno = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turnoDAO.todos());
-        spinnerTurno.setAdapter(arrayAdapterTurno);
+
 
     }
 }

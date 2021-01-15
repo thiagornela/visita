@@ -24,20 +24,20 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/item_foto_familia"
+                android:id="@+id/formulario_foto_familia"
                 android:layout_width="190dp"
                 android:layout_height="111dp"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toStartOf="@+id/divisor_informacoes_cadastrais_superior"
+                app:layout_constraintEnd_toStartOf="@+id/divisor_titulo_foto_da_familia"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/divisor_informacoes_cadastrais_superior"
+                app:layout_constraintTop_toTopOf="@+id/divisor_titulo_foto_da_familia"
                 tools:src="@mipmap/ic_launcher_round" />
 
             <View
-                android:id="@+id/divisor_informacoes_cadastrais_superior"
+                android:id="@+id/divisor_titulo_foto_da_familia"
                 android:layout_width="15dp"
                 android:layout_height="0dp"
                 android:background="#FA0101"
@@ -46,48 +46,50 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button_editar"
+                android:id="@+id/item_button_atendimento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:text="Editar"
-                app:layout_constraintEnd_toStartOf="@+id/divisor_informacoes_cadastrais_superior"
-                app:layout_constraintStart_toStartOf="@+id/button2_atendimento"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/button2_atendimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
+                android:focusable="false"
                 android:text="Atendimento"
-                app:layout_constraintEnd_toStartOf="@+id/divisor_informacoes_cadastrais_superior"
-                app:layout_constraintTop_toBottomOf="@+id/button_editar" />
+                app:layout_constraintEnd_toStartOf="@+id/divisor_titulo_foto_da_familia"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/item_visita_unidade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                android:textSize="24sp"
+                android:layout_marginTop="4dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_foto_familia"
+                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
+                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
+                app:layout_constraintTop_toBottomOf="@+id/item_button_atendimento"
                 tools:text="Buritis" />
+
+            <TextView
+                android:id="@+id/item_secretaria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
+                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_unidade"
+                tools:text="Alessandra" />
 
             <TextView
                 android:id="@+id/item_visita_nome_crianca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="TextView"
+                android:layout_marginTop="7dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
-                app:layout_constraintTop_toBottomOf="@+id/item_visita_unidade"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintTop_toBottomOf="@+id/formulario_foto_familia"
                 tools:text="Criança: Thiago Ornelas Cota" />
 
             <TextView
@@ -95,22 +97,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
                 tools:text="Turma: Maternal 1" />
+
+            <TextView
+                android:id="@+id/item_tracinho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:text="-"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/item_visita_turma"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca" />
 
 
             <TextView
                 android:id="@+id/item_visita_turno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/item_visita_turma"
+                app:layout_constraintStart_toEndOf="@+id/item_tracinho"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
                 tools:text="Tarde" />
 
@@ -119,49 +130,92 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_turma"
                 tools:text="Responsável 1: Rita Ornelas de Souza" />
 
             <TextView
-                android:id="@+id/item_visita_telefones"
+                android:id="@+id/item_visita_telefone_fixo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
-                tools:text="(31) 3388-8131 | (31) 98676-4416" />
+                tools:text="(31) 3388-8131" />
+
+            <TextView
+                android:id="@+id/item_barrinha_telefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:text="|"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/item_visita_telefone_fixo"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1" />
+
+            <TextView
+                android:id="@+id/item_visita_telefone_celular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/item_barrinha_telefone"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
+                tools:text="(31) 98676-4416" />
 
             <TextView
                 android:id="@+id/item_visita_email_responsavel_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
-                app:layout_constraintTop_toBottomOf="@+id/item_visita_telefones"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_telefone_fixo"
                 tools:text="Email: thiagornela@hotmail.com" />
 
             <TextView
                 android:id="@+id/item_visita_situacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_email_responsavel_1"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Contato da escola para " />
+
+            <TextView
+                android:id="@+id/item_data_limite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="TextView"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/item_visita_unidade"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/item_visita_situacao"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_email_responsavel_1"
+                tools:text="30/12/2021" />
+
+            <Switch
+                android:id="@+id/item_switch_tem_irmao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:checked="true"
+                android:clickable="false"
+                android:text="Tem irmão(ã)"
+                android:visibility="gone"
+                android:focusable="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/divisor_informacoes_cadastrais_superior"
-                tools:text="Situação: Aguardando contato da escola para 17/03/2020" />
+                app:layout_constraintEnd_toStartOf="@+id/divisor_titulo_foto_da_familia"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_situacao" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

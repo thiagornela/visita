@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.cadastrodevisita.R;
@@ -54,31 +55,47 @@ public class ListaVisitasAdapter extends BaseAdapter {
     }
 
     private void vincula(View view, Visita visita) {
-        ImageView imagemFamilia = view.findViewById(R.id.item_foto_familia);
+        ImageView imagemFamilia = view.findViewById(R.id.formulario_foto_familia);
         imagemFamilia.setImageBitmap(visita.getFoto_familia());
         TextView unidade = view.findViewById(R.id.item_visita_unidade);
         unidade.setText(visita.getUnidade());
+        TextView secretaria = view.findViewById(R.id.item_secretaria);
+        secretaria.setText(visita.getSecrearia());
         TextView nome_crianca = view.findViewById(R.id.item_visita_nome_crianca);
         nome_crianca.setText(visita.getNome_crianca());
         TextView turma = view.findViewById(R.id.item_visita_turma);
-        turma.setText(visita.getTurma());
+        turma.setText(visita.getTurma_crianca());
         TextView turno = view.findViewById(R.id.item_visita_turno);
-        turno.setText(visita.getTurno());
+        turno.setText(visita.getTurno_crianca());
         TextView nome_responsavel1 = view.findViewById(R.id.item_visita_nome_responsavel_1);
         nome_responsavel1.setText(visita.getNome_responsavel_1());
-        TextView telefone_responsavel1 = view.findViewById(R.id.item_visita_telefones);
-        telefone_responsavel1.setText(visita.getTelefone_fixo_responsavel_1());
+        TextView telefone_fixo_responsavel1 = view.findViewById(R.id.item_visita_telefone_fixo);
+        telefone_fixo_responsavel1.setText(visita.getTelefone_fixo_responsavel_1());
+        TextView telefone_celular_responsavel1 = view.findViewById(R.id.item_visita_telefone_celular);
+        telefone_celular_responsavel1.setText(visita.getTelefone_celular_responsavel_1());
         TextView email_responsavel1 = view.findViewById(R.id.item_visita_email_responsavel_1);
         email_responsavel1.setText(visita.getEmail_responsavel_1());
         TextView situacao = view.findViewById(R.id.item_visita_situacao);
         situacao.setText(visita.getSituacao());
+
+        TextView data_limite_situacao = view.findViewById(R.id.item_data_limite);
+        if (visita.getSituacao().equals("Contato da escola para ") || visita.getSituacao().equals("Ambientação para ")) {
+            data_limite_situacao.setVisibility(view.VISIBLE);
+            data_limite_situacao.setText(visita.getDataLimite());
+        }
+
+        Switch temIrmao = view.findViewById(R.id.item_switch_tem_irmao);
+        if(visita.getTemIrmao()){
+            temIrmao.setVisibility(view.VISIBLE);
+        }
     }
 
     public void atualiza(List<Visita> visitas) {
         List<Visita> visitas_filtradas = new ArrayList<>();
         for (int i = 0; i < visitas.size(); i++) {
-            if (visitas.get(i).getTurno().equals("Manhã"))
+            if (visitas.get(i).getSituacao().equals("Contato da escola para ") || visitas.get(i).getSituacao().equals("Ambientação para ")) {
                 visitas_filtradas.add(visitas.get(i));
+            }
         }
         this.visitas.clear();
         this.visitas.addAll(visitas_filtradas);
@@ -88,5 +105,4 @@ public class ListaVisitasAdapter extends BaseAdapter {
     public List<Visita> getVisitas() {
         return visitas;
     }
-
 }

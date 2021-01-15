@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginTop="8dp"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
                     android:layout_height="220dp">
 
                     <TextView
-                        android:id="@+id/informacoes_cadastrais"
+                        android:id="@+id/titulo_foto_da_familia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -47,7 +48,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/item_foto_familia"
+                        android:id="@+id/formulario_foto_familia"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_margin="8dp"
@@ -55,12 +56,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/divisor_informacoes_cadastrais_superior"
+                        app:layout_constraintTop_toTopOf="@+id/divisor_titulo_foto_da_familia"
                         app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@android:drawable/ic_menu_report_image" />
 
                     <View
-                        android:id="@+id/divisor_informacoes_cadastrais_superior"
+                        android:id="@+id/divisor_titulo_foto_da_familia"
                         android:layout_width="0dp"
                         android:layout_height="3dp"
                         android:layout_marginStart="8dp"
@@ -68,29 +69,29 @@
                         android:background="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/informacoes_cadastrais" />
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_foto_da_familia" />
 
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/botao_tirar_foto"
+                        android:id="@+id/formulario_botao_tirar_foto"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:clickable="true"
                         app:backgroundTint="@color/cardview_light_background"
                         app:fabCustomSize="40dp"
-                        app:layout_constraintBottom_toTopOf="@+id/botao_galeria"
-                        app:layout_constraintEnd_toEndOf="@+id/item_foto_familia"
+                        app:layout_constraintBottom_toTopOf="@+id/formulario_botao_galeria"
+                        app:layout_constraintEnd_toEndOf="@+id/formulario_foto_familia"
                         app:srcCompat="@android:drawable/ic_menu_camera" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/botao_galeria"
+                        android:id="@+id/formulario_botao_galeria"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:clickable="true"
                         app:backgroundTint="@color/cardview_light_background"
                         app:fabCustomSize="40dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/item_foto_familia"
+                        app:layout_constraintEnd_toEndOf="@+id/formulario_foto_familia"
                         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
@@ -98,10 +99,11 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview_aluno"
+                android:id="@+id/cardview_crianca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +130,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
-                        android:id="@+id/divisor_aluno"
+                        android:id="@+id/divisor_titulo_aluno"
                         android:layout_width="0dp"
                         android:layout_height="3dp"
                         android:layout_marginStart="8dp"
@@ -139,7 +141,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/titulo_dados_da_crianca" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nome_crianca"
+                        android:id="@+id/formulario_nome_crianca"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -151,7 +153,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/divisor_aluno">
+                        app:layout_constraintTop_toBottomOf="@+id/divisor_titulo_aluno">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -161,7 +163,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/data_nascimento"
+                        android:id="@+id/formulario_data_nascimento_crianca"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -173,7 +175,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nome_crianca">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_nome_crianca">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -183,7 +185,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/turma_TextInputLayout"
+                        android:id="@+id/formulario_turma_crianca"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -194,19 +196,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/data_nascimento"
-                        app:layout_constraintTop_toBottomOf="@+id/data_nascimento">
+                        app:layout_constraintStart_toStartOf="@+id/formulario_data_nascimento_crianca"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_nascimento_crianca">
 
                         <AutoCompleteTextView
-                            android:id="@+id/spinner_Turma"
+                            android:id="@+id/spinner_Turma_crianca"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Turma" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/turno_TextInputLayout"
+                        android:id="@+id/formulario_turno_crianca"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -219,14 +221,163 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/data_nascimento"
-                        app:layout_constraintTop_toBottomOf="@+id/turma_TextInputLayout">
+                        app:layout_constraintStart_toStartOf="@+id/formulario_data_nascimento_crianca"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_turma_crianca"
+                        app:layout_constraintVertical_bias="0.0">
 
                         <AutoCompleteTextView
-                            android:id="@+id/spinner_Turno"
+                            android:id="@+id/spinner_Turno_crianca"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:hint="Turno"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Switch
+                        android:id="@+id/switch_tem_irmao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Tem irmão(ã)?"
+                        android:textColor="#1B508C"
+                        app:layout_constraintEnd_toEndOf="@+id/formulario_turno_crianca"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_turno_crianca" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_irmao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_crianca"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/titulo_irmao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="DADOS DO IRMÃO(Ã)"
+                        android:textColor="#1B508C"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/divisor_irmao"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#1B508C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_irmao" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_nome_irmao"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divisor_irmao">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nome"
+                            android:inputType="textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_data_nascimento_irmao"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_nome_irmao">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Data de nascimento"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_turma_irmao"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/formulario_data_nascimento_irmao"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_nascimento_irmao">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_Turma_irmao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:hint="Turma" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_turno_irmao"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/formulario_data_nascimento_irmao"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_turma_irmao">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_Turno_irmao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
                             android:hint="Turno" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -239,17 +390,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardview_aluno">
+                app:layout_constraintTop_toBottomOf="@+id/cardview_irmao">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/informacoes_responsavel_1"
+                        android:id="@+id/titulo_responsavel_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -270,23 +422,23 @@
                         android:background="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/informacoes_responsavel_1" />
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_responsavel_1" />
 
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nome_responsavel_1"
+                        android:id="@+id/formulario_nome_responsavel_1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/informacoes_responsavel_1">
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_responsavel_1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -297,18 +449,18 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/formulario_email_responsavel1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nome_responsavel_1">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_nome_responsavel_1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -319,15 +471,15 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/fixo_responsavel1"
+                        android:id="@+id/formulario_fixo_responsavel1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -342,19 +494,19 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/celular_responsavel1"
+                        android:id="@+id/formulario_celular_responsavel1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fixo_responsavel1">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_fixo_responsavel1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -365,7 +517,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/cpf_responsavel1"
+                        android:id="@+id/formulario_cpf_responsavel1"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -378,7 +530,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/celular_responsavel1">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_celular_responsavel1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -396,6 +548,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -406,7 +559,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/informacoes_responsavel_2"
+                        android:id="@+id/titulo_responsavel_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -427,18 +580,18 @@
                         android:background="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/informacoes_responsavel_2" />
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_responsavel_2" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nome_responsavel_2"
+                        android:id="@+id/formulario_nome_responsavel_2"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -452,19 +605,19 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/email_responsavel_2"
+                        android:id="@+id/formulario_email_responsavel_2"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nome_responsavel_2">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_nome_responsavel_2">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -475,19 +628,19 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/fixo_responsavel_2"
+                        android:id="@+id/formulario_fixo_responsavel_2"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/email_responsavel_2">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_email_responsavel_2">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -498,19 +651,19 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/celular_responsavel_2"
+                        android:id="@+id/formulario_celular_responsavel_2"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:textColorHint="#1B508C"
-                        app:boxStrokeColor="#1B508C"
+                        android:textSize="18sp"
                         app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fixo_responsavel_2">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_fixo_responsavel_2">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -521,7 +674,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/cpf_responsavel_2"
+                        android:id="@+id/formulario_cpf_responsavel_2"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -534,7 +687,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/celular_responsavel_2">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_celular_responsavel_2">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -565,7 +718,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/dados_gerais"
+                        android:id="@+id/titulo_dados_gerais"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -586,10 +739,32 @@
                         android:background="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/dados_gerais" />
+                        app:layout_constraintTop_toBottomOf="@+id/titulo_dados_gerais" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/unidade_TextInputLayout"
+                        android:id="@+id/formulario_data_visita"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divisor_dados_gerais">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Data da visita"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_unidade"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -600,19 +775,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/divisor_dados_gerais" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_visita" >
 
                     <AutoCompleteTextView
                         android:id="@+id/spinner_Unidade"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
+                        android:inputType="none"
                         android:hint="Unidade" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/secretaria_TextInputLayout"
+                        android:id="@+id/formulario_secretaria"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -623,19 +798,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/unidade_TextInputLayout" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_unidade" >
 
                         <AutoCompleteTextView
                             android:id="@+id/spinner_Secretaria"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Secretária" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tipoAtendimento_TextInputLayout"
+                        android:id="@+id/formulario_tipoAtendimento"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -646,19 +821,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/secretaria_TextInputLayout" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_secretaria" >
 
                         <AutoCompleteTextView
                             android:id="@+id/spinner_TipoAtendimento"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Tipo de atendimento" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/colaborador_TextInputLayout"
+                        android:id="@+id/formulario_colaborador"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -669,19 +844,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/tipoAtendimento_TextInputLayout" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_tipoAtendimento" >
 
                         <AutoCompleteTextView
                             android:id="@+id/spinner_Colaborador"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Quem apresentou a escola" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/comoNosConheceu_TextInputLayout"
+                        android:id="@+id/formulario_comoNosConheceu"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -692,19 +867,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/colaborador_TextInputLayout" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_colaborador" >
 
                         <AutoCompleteTextView
                             android:id="@+id/spinner_ComoNosConheceu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Como nos conheceu" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/situacao_TextInputLayout"
+                        android:id="@+id/formulario_situacao"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -715,19 +890,19 @@
                         app:boxStrokeColor="#1B508C"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/comoNosConheceu_TextInputLayout" >
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_comoNosConheceu" >
 
                         <AutoCompleteTextView
                             android:id="@+id/spinner_Situacao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
+                            android:inputType="none"
                             android:hint="Situação" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/data_limite_situacao"
+                        android:id="@+id/formulario_data_limite_situacao"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -740,7 +915,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/situacao_TextInputLayout">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_situacao">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -750,7 +925,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/observacao"
+                        android:id="@+id/formulario_observacao"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -763,7 +938,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/data_limite_situacao">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_limite_situacao">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -771,9 +946,6 @@
                             android:hint="Observação"
                             android:inputType="textMultiLine" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
