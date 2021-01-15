@@ -151,7 +151,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         campo_nome_crianca.getEditText().setText(visita.getNome_crianca());
         campo_dataNascimento_crianca.getEditText().setText(visita.getDataNascimento_crianca());
        // spinnerTurma_irmao.getAdapter());
-        //
+        ////
     }
 
 //    public void tirarFoto(View view) {
