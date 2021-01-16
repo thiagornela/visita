@@ -116,7 +116,7 @@ public class Cadastro_Visita extends AppCompatActivity {
             }
         });
 
-        //COLOCAR ONRESUME NESSA MERDA
+        //ARRUMAR A ROTAÇÃO DESSA MERDA
 
     }
 
@@ -354,8 +354,8 @@ public class Cadastro_Visita extends AppCompatActivity {
         cardview_irmao = findViewById(R.id.cardview_irmao);
         campo_nome_Irmao = findViewById(R.id.formulario_nome_irmao);
         campo_dataNascimento_Irmao = findViewById(R.id.formulario_data_nascimento_irmao);
-//        spinnerTurma_irmao.setAdapter(arrayAdapterTurma);
-//        spinnerTurno_irmao.setAdapter(arrayAdapterTurno);
+        spinnerTurma_irmao.setAdapter(arrayAdapterTurma);
+        spinnerTurno_irmao.setAdapter(arrayAdapterTurno);
 
         campo_nome_responsavel_1 = findViewById(R.id.formulario_nome_responsavel_1);
         campo_email_responsavel_1 = findViewById(R.id.formulario_email_responsavel1);
@@ -380,7 +380,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         campo_observacao = (TextInputLayout) findViewById(R.id.formulario_observacao);
 
         ArrayAdapter<Unidade> arrayAdapterUnidade = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, unidadeDAO.todos());
-        spinnerUnidade.setAdapter(arrayAdapterUnidade); 
+        spinnerUnidade.setAdapter(arrayAdapterUnidade);
         ArrayAdapter<Secretaria> arrayAdapterSecretaria = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, secretariaDAO.todos());
         spinnerSecretaria.setAdapter(arrayAdapterSecretaria);
         ArrayAdapter<TipoAtendimento> arrayAdapterTipoAtendimento = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, tipoAtendimentoDAO.todos());
