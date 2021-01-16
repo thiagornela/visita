@@ -1,6 +1,8 @@
 package com.example.cadastrodevisita.model;
 
-public class Turno {
+import java.io.Serializable;
+
+public class Turno  implements Serializable {
 
     private String turno;
     private int id = 0;

@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 vaiParaEditaVisita(visitaClicada);
             }
         });
-        registerForContextMenu(listaDeVisitas);
+        //registerForContextMenu(listaDeVisitas);
     }
 
 

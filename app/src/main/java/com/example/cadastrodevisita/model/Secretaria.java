@@ -1,6 +1,8 @@
 package com.example.cadastrodevisita.model;
 
-public class Secretaria {
+import java.io.Serializable;
+
+public class Secretaria  implements Serializable {
 
     private String secretaria;
     private int id = 0;

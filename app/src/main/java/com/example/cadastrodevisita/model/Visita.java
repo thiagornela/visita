@@ -34,7 +34,7 @@ public class Visita implements Serializable {
     private String colaborador;
     private String comoNosConheceu;
     private String situacao;
-    private String dataLimite;
+    private String dataAgendada;
     private String observacao;
 
     public Visita() {
@@ -188,12 +188,12 @@ public class Visita implements Serializable {
         this.comoNosConheceu = comoNosConheceu;
     }
 
-    public String getDataLimite() {
-        return dataLimite;
+    public String getDataAgendada() {
+        return dataAgendada;
     }
 
-    public void setDataLimite(String dataLimite) {
-        this.dataLimite = dataLimite;
+    public void setDataAgendada(String dataAgendada) {
+        this.dataAgendada = dataAgendada;
     }
 
     public boolean getTemIrmao() {
@@ -202,10 +202,6 @@ public class Visita implements Serializable {
 
     public void setTemIrmao(boolean temIrmao) {
         this.temIrmao = temIrmao;
-    }
-
-    public boolean isTemIrmao() {
-        return temIrmao;
     }
 
     public String getNome_irmao() {

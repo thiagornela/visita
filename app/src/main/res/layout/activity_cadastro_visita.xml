@@ -759,8 +759,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Data da visita"
-                            android:inputType="date" />
+                            android:hint="Data da visita"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -902,7 +901,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/formulario_data_limite_situacao"
+                        android:id="@+id/formulario_data_agendada_situacao"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -920,8 +919,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Data limite"
-                            android:inputType="date" />
+                            android:hint="Data agendada"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -938,7 +936,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_limite_situacao">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_data_agendada_situacao">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"

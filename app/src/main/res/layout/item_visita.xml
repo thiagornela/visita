@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/formulario_foto_familia"
+                android:id="@+id/item_foto_familia"
                 android:layout_width="190dp"
                 android:layout_height="111dp"
                 android:layout_margin="8dp"
@@ -88,8 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
-                app:layout_constraintTop_toBottomOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
+                app:layout_constraintTop_toBottomOf="@+id/item_foto_familia"
                 tools:text="Criança: Thiago Ornelas Cota" />
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
                 tools:text="Turma: Maternal 1" />
 
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_turma"
                 tools:text="Responsável 1: Rita Ornelas de Souza" />
 
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
                 tools:text="(31) 3388-8131" />
 
@@ -173,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_telefone_fixo"
                 tools:text="Email: thiagornela@hotmail.com" />
 
@@ -186,7 +186,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/formulario_foto_familia"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_email_responsavel_1"
                 app:layout_constraintVertical_bias="0.0"
                 tools:text="Contato da escola para " />

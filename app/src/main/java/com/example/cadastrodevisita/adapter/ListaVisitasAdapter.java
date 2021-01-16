@@ -55,8 +55,8 @@ public class ListaVisitasAdapter extends BaseAdapter {
     }
 
     private void vincula(View view, Visita visita) {
-        ImageView imagemFamilia = view.findViewById(R.id.formulario_foto_familia);
-        imagemFamilia.setImageBitmap(visita.getFoto_familia());
+        ImageView imagemFamilia = view.findViewById(R.id.item_foto_familia);
+        if(visita.getFoto_familia() != null) imagemFamilia.setImageBitmap(visita.getFoto_familia());
         TextView unidade = view.findViewById(R.id.item_visita_unidade);
         unidade.setText(visita.getUnidade());
         TextView secretaria = view.findViewById(R.id.item_secretaria);
@@ -81,7 +81,7 @@ public class ListaVisitasAdapter extends BaseAdapter {
         TextView data_limite_situacao = view.findViewById(R.id.item_data_limite);
         if (visita.getSituacao().equals("Contato da escola para ") || visita.getSituacao().equals("Ambientação para ")) {
             data_limite_situacao.setVisibility(view.VISIBLE);
-            data_limite_situacao.setText(visita.getDataLimite());
+            data_limite_situacao.setText(visita.getDataAgendada());
         }
 
         Switch temIrmao = view.findViewById(R.id.item_switch_tem_irmao);

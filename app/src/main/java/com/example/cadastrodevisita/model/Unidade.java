@@ -1,6 +1,8 @@
 package com.example.cadastrodevisita.model;
 
-public class Unidade {
+import java.io.Serializable;
+
+public class Unidade  implements Serializable {
 
     private String unidade;
     private int id = 0;

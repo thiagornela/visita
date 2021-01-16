@@ -1,6 +1,9 @@
 package com.example.cadastrodevisita.model;
 
-public class Turma {
+import java.io.Serializable;
+import java.security.SecureRandom;
+
+public class Turma implements Serializable {
 
     private String turma;
     private int id = 0;
