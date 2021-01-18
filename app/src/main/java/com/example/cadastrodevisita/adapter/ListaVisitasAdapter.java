@@ -12,8 +12,13 @@ import android.widget.TextView;
 import com.example.cadastrodevisita.R;
 import com.example.cadastrodevisita.model.Visita;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.cadastrodevisita.ui.activities.Constantes.SITUACAO_AMBIENTACAO_PARA;
+import static com.example.cadastrodevisita.ui.activities.Constantes.SITUACAO_CONTATO_ESCOLA_PARA;
 
 public class ListaVisitasAdapter extends BaseAdapter {
 
@@ -56,11 +61,14 @@ public class ListaVisitasAdapter extends BaseAdapter {
 
     private void vincula(View view, Visita visita) {
         ImageView imagemFamilia = view.findViewById(R.id.item_foto_familia);
-        if(visita.getFoto_familia() != null) imagemFamilia.setImageBitmap(visita.getFoto_familia());
+        if (visita.getFoto_familia() != null)
+            imagemFamilia.setImageBitmap(visita.getFoto_familia());
         TextView unidade = view.findViewById(R.id.item_visita_unidade);
         unidade.setText(visita.getUnidade());
         TextView secretaria = view.findViewById(R.id.item_secretaria);
         secretaria.setText(visita.getSecrearia());
+        TextView dataVisita = view.findViewById(R.id.item_data_visita);
+        dataVisita.setText(visita.getDataCadastro());
         TextView nome_crianca = view.findViewById(R.id.item_visita_nome_crianca);
         nome_crianca.setText(visita.getNome_crianca());
         TextView turma = view.findViewById(R.id.item_visita_turma);
@@ -69,8 +77,15 @@ public class ListaVisitasAdapter extends BaseAdapter {
         turno.setText(visita.getTurno_crianca());
         TextView nome_responsavel1 = view.findViewById(R.id.item_visita_nome_responsavel_1);
         nome_responsavel1.setText(visita.getNome_responsavel_1());
+
         TextView telefone_fixo_responsavel1 = view.findViewById(R.id.item_visita_telefone_fixo);
-        telefone_fixo_responsavel1.setText(visita.getTelefone_fixo_responsavel_1());
+        if (visita.getTelefone_fixo_responsavel_1() != null) {
+            telefone_fixo_responsavel1.setText(visita.getTelefone_fixo_responsavel_1());
+        } else {
+            telefone_fixo_responsavel1.setVisibility(View.GONE);
+            view.findViewById(R.id.item_tracinho).setVisibility(View.GONE);
+        }
+
         TextView telefone_celular_responsavel1 = view.findViewById(R.id.item_visita_telefone_celular);
         telefone_celular_responsavel1.setText(visita.getTelefone_celular_responsavel_1());
         TextView email_responsavel1 = view.findViewById(R.id.item_visita_email_responsavel_1);
@@ -78,14 +93,14 @@ public class ListaVisitasAdapter extends BaseAdapter {
         TextView situacao = view.findViewById(R.id.item_visita_situacao);
         situacao.setText(visita.getSituacao());
 
-        TextView data_limite_situacao = view.findViewById(R.id.item_data_limite);
-        if (visita.getSituacao().equals("Contato da escola para ") || visita.getSituacao().equals("Ambientação para ")) {
+        TextView data_limite_situacao = view.findViewById(R.id.item_data_agendada);
+        if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
             data_limite_situacao.setVisibility(view.VISIBLE);
             data_limite_situacao.setText(visita.getDataAgendada());
         }
 
         Switch temIrmao = view.findViewById(R.id.item_switch_tem_irmao);
-        if(visita.getTemIrmao()){
+        if (visita.getTemIrmao()) {
             temIrmao.setVisibility(view.VISIBLE);
         }
     }
@@ -93,7 +108,7 @@ public class ListaVisitasAdapter extends BaseAdapter {
     public void atualiza(List<Visita> visitas) {
         List<Visita> visitas_filtradas = new ArrayList<>();
         for (int i = 0; i < visitas.size(); i++) {
-            if (visitas.get(i).getSituacao().equals("Contato da escola para ") || visitas.get(i).getSituacao().equals("Ambientação para ")) {
+            if (visitas.get(i).getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visitas.get(i).getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
                 visitas_filtradas.add(visitas.get(i));
             }
         }

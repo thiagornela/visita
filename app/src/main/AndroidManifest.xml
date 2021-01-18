@@ -3,6 +3,7 @@
     package="com.example.cadastrodevisita">
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".VisitaApplication"
@@ -12,16 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroDeVisita">
-        <activity android:name=".ui.activities.Activity_Informar_Atendimento" />
-        <activity android:name=".cadastro.Cadastro_Situacao" />
-        <activity android:name=".cadastro.Cadastro_Visita" />
-        <activity android:name=".cadastro.Cadastro_Como_Nos_Conheceu" />
-        <activity android:name=".cadastro.Cadastro_Tipo_Atendimento" />
-        <activity android:name=".cadastro.Cadastro_Colaborador" />
-        <activity android:name=".cadastro.Cadastro_Unidade" />
-        <activity android:name=".cadastro.Cadastro_Turno" />
-        <activity android:name=".cadastro.Cadastro_Turma" />
-        <activity android:name=".cadastro.Cadastro_Secretaria" />
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activities.Activity_Informar_Atendimento" />
+        <activity android:name=".cadastro.Cadastro_Situacao" />
+        <activity android:name=".cadastro.Cadastro_Visita"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".cadastro.Cadastro_Como_Nos_Conheceu" />
+        <activity android:name=".cadastro.Cadastro_Tipo_Atendimento" />
+        <activity android:name=".cadastro.Cadastro_Colaborador" />
+        <activity android:name=".cadastro.Cadastro_Unidade" />
+        <activity android:name=".cadastro.Cadastro_Turno" />
+        <activity android:name=".cadastro.Cadastro_Turma" />
+        <activity android:name=".cadastro.Cadastro_Secretaria" />
     </application>
 
 </manifest>

@@ -1,10 +1,13 @@
 package com.example.cadastrodevisita.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class Visita implements Serializable {
+public class Visita implements Parcelable {
 
     private int id = 0;
     private Bitmap foto_familia;
@@ -27,7 +30,6 @@ public class Visita implements Serializable {
     private String telefone_fixo_responsavel_2;
     private String telefone_celular_responsavel_2;
     private String email_responsavel_2;
-    private String dataCadastro;
     private String unidade;
     private String secrearia;
     private String tipoAtendimento;
@@ -36,9 +38,100 @@ public class Visita implements Serializable {
     private String situacao;
     private String dataAgendada;
     private String observacao;
+    private String dataCadastro;
+    private String motivo_outraEscola;
+    private String nome_outraEscola;
 
     public Visita() {
     }
+
+    protected Visita(Parcel in) {
+        id = in.readInt();
+        foto_familia = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
+        nome_crianca = in.readString();
+        dataNascimento_crianca = in.readString();
+        turma_crianca = in.readString();
+        turno_crianca = in.readString();
+        temIrmao = in.readByte() != 0;
+        nome_irmao = in.readString();
+        dataNascimento_irmao = in.readString();
+        turma_irmao = in.readString();
+        turno_irmao = in.readString();
+        nome_responsavel_1 = in.readString();
+        cpf_responsavel_1 = in.readString();
+        telefone_fixo_responsavel_1 = in.readString();
+        telefone_celular_responsavel_1 = in.readString();
+        email_responsavel_1 = in.readString();
+        nome_responsavel_2 = in.readString();
+        cpf_responsavel_2 = in.readString();
+        telefone_fixo_responsavel_2 = in.readString();
+        telefone_celular_responsavel_2 = in.readString();
+        email_responsavel_2 = in.readString();
+        unidade = in.readString();
+        secrearia = in.readString();
+        tipoAtendimento = in.readString();
+        colaborador = in.readString();
+        comoNosConheceu = in.readString();
+        situacao = in.readString();
+        dataAgendada = in.readString();
+        observacao = in.readString();
+        dataCadastro = in.readString();
+        motivo_outraEscola = in.readString();
+        nome_outraEscola = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeValue(foto_familia);
+        dest.writeString(nome_crianca);
+        dest.writeString(dataNascimento_crianca);
+        dest.writeString(turma_crianca);
+        dest.writeString(turno_crianca);
+        dest.writeByte((byte) (temIrmao ? 1 : 0));
+        dest.writeString(nome_irmao);
+        dest.writeString(dataNascimento_irmao);
+        dest.writeString(turma_irmao);
+        dest.writeString(turno_irmao);
+        dest.writeString(nome_responsavel_1);
+        dest.writeString(cpf_responsavel_1);
+        dest.writeString(telefone_fixo_responsavel_1);
+        dest.writeString(telefone_celular_responsavel_1);
+        dest.writeString(email_responsavel_1);
+        dest.writeString(nome_responsavel_2);
+        dest.writeString(cpf_responsavel_2);
+        dest.writeString(telefone_fixo_responsavel_2);
+        dest.writeString(telefone_celular_responsavel_2);
+        dest.writeString(email_responsavel_2);
+        dest.writeString(unidade);
+        dest.writeString(secrearia);
+        dest.writeString(tipoAtendimento);
+        dest.writeString(colaborador);
+        dest.writeString(comoNosConheceu);
+        dest.writeString(situacao);
+        dest.writeString(dataAgendada);
+        dest.writeString(observacao);
+        dest.writeString(dataCadastro);
+        dest.writeString(motivo_outraEscola);
+        dest.writeString(nome_outraEscola);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Visita> CREATOR = new Creator<Visita>() {
+        @Override
+        public Visita createFromParcel(Parcel in) {
+            return new Visita(in);
+        }
+
+        @Override
+        public Visita[] newArray(int size) {
+            return new Visita[size];
+        }
+    };
 
     public String getDataCadastro() {
         return dataCadastro;
@@ -282,5 +375,21 @@ public class Visita implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public String getMotivo_outraEscola() {
+        return motivo_outraEscola;
+    }
+
+    public void setMotivo_outraEscola(String motivo_outraEscola) {
+        this.motivo_outraEscola = motivo_outraEscola;
+    }
+
+    public String getNome_outraEscola() {
+        return nome_outraEscola;
+    }
+
+    public void setNome_outraEscola(String nome_outraEscola) {
+        this.nome_outraEscola = nome_outraEscola;
     }
 }

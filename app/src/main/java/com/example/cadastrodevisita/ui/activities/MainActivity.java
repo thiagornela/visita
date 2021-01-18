@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastrodevisita.ListaVisitasView;
@@ -23,6 +24,7 @@ import com.example.cadastrodevisita.cadastro.Cadastro_Unidade;
 import com.example.cadastrodevisita.cadastro.Cadastro_Visita;
 import com.example.cadastrodevisita.dao.VisitaDAO;
 import com.example.cadastrodevisita.model.Visita;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -35,22 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private final ListaVisitasView listaVisitasView = new ListaVisitasView(this);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_visita);
         setTitle(TITULO_APPBAR);
         configuraLista();
         configuraBotoesMenu();
 
-//        Button teste = findViewById(R.id.item_button_atendimento);
-//        teste.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
-//                intent.putExtra(CHAVE_VISITA, visitaClicada);
-//                startActivity(intent);
-//            }
-//        });
+
 
     }
 
@@ -88,17 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void vaiParaEditaVisita(Visita visitaClicada) {
         Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
-        intent.putExtra(CHAVE_VISITA, visitaClicada);
+        intent.putExtra(CHAVE_VISITA,visitaClicada);
+        //intent.putExtra(CHAVE_VISITA, visitaClicada);
         startActivity(intent);
     }
 
     private void vaiParaCadastroVisita() {
         Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
-        startActivity(intent);
-    }
-
-    private void vaiParaCadastroUnidade() {
-        Intent intent = new Intent(MainActivity.this, Cadastro_Unidade.class);
         startActivity(intent);
     }
 

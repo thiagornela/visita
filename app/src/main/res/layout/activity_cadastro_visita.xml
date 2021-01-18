@@ -181,7 +181,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Data de nascimento"
-                            android:inputType="date" />
+                            android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="DADOS DO IRMÃO(Ã)"
+                        android:text="DADOS IRMÃO(Ã)"
                         android:textColor="#1B508C"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -901,6 +901,50 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_Motivo_Matriculou_OutraEscola"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_situacao" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Motivo" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_Matriculou_Nome_OutraEscola"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_Motivo_Matriculou_OutraEscola" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nome da outra escola" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/formulario_data_agendada_situacao"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
@@ -914,7 +958,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/formulario_situacao">
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_Matriculou_Nome_OutraEscola">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"

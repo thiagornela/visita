@@ -49,7 +49,6 @@
                 android:id="@+id/item_button_atendimento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:focusable="false"
                 android:text="Atendimento"
@@ -61,8 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
                 app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
@@ -74,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
@@ -83,6 +81,18 @@
                 tools:text="Alessandra" />
 
             <TextView
+                android:id="@+id/item_data_visita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
+                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
+                app:layout_constraintTop_toBottomOf="@+id/item_secretaria"
+                tools:text="30/12/2021" />
+            <!--                android:textStyle="bold"-->
+            <TextView
                 android:id="@+id/item_visita_nome_crianca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +100,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_foto_familia"
-                tools:text="Criança: Thiago Ornelas Cota" />
+                tools:text="Nome criança" />
 
             <TextView
                 android:id="@+id/item_visita_turma"
@@ -125,15 +135,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
                 tools:text="Tarde" />
 
+
+            <TextView
+                android:id="@+id/item_responsavel_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Responsável 1: "
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
+                app:layout_constraintTop_toBottomOf="@+id/item_visita_turma" />
+
             <TextView
                 android:id="@+id/item_visita_nome_responsavel_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
+                app:layout_constraintStart_toEndOf="@+id/item_responsavel_textview"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_turma"
-                tools:text="Responsável 1: Rita Ornelas de Souza" />
+                tools:text="Nome completo" />
 
             <TextView
                 android:id="@+id/item_visita_telefone_fixo"
@@ -143,7 +164,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
-                tools:text="(31) 3388-8131" />
+                tools:text="(31) 3333-3333" />
 
             <TextView
                 android:id="@+id/item_barrinha_telefone"
@@ -165,7 +186,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_barrinha_telefone"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
-                tools:text="(31) 98676-4416" />
+                tools:text="(31) 99999-9999" />
 
             <TextView
                 android:id="@+id/item_visita_email_responsavel_1"
@@ -175,7 +196,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_telefone_fixo"
-                tools:text="Email: thiagornela@hotmail.com" />
+                tools:text="Email: t@com.br" />
 
             <TextView
                 android:id="@+id/item_visita_situacao"
@@ -192,7 +213,7 @@
                 tools:text="Contato da escola para " />
 
             <TextView
-                android:id="@+id/item_data_limite"
+                android:id="@+id/item_data_agendada"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
