@@ -465,6 +465,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         cardview_irmao = findViewById(R.id.cardview_irmao);
         campo_nome_Irmao = findViewById(R.id.formulario_nome_irmao);
         campo_dataNascimento_Irmao = findViewById(R.id.formulario_data_nascimento_irmao);
+        pegaData(campo_dataNascimento_Irmao);
         //spinnerTurma_irmao.setAdapter(arrayAdapterTurma);
         //spinnerTurno_irmao.setAdapter(arrayAdapterTurno);
 
@@ -492,6 +493,7 @@ public class Cadastro_Visita extends AppCompatActivity {
 
         campo_data_visita = findViewById(R.id.formulario_data_visita);
         configuraCampoObrigatorio(campo_data_visita);
+        pegaData(campo_data_visita);
         spinnerUnidade = findViewById(R.id.spinner_Unidade);
         formulario_unidade = findViewById(R.id.formulario_unidade);
         configuraCampoObrigatorio(formulario_unidade);
@@ -511,6 +513,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         formulario_situacao = findViewById(R.id.formulario_situacao);
         configuraCampoObrigatorio(formulario_situacao);
         campo_data_situacao_agendada = findViewById(R.id.formulario_data_agendada_situacao);
+        pegaData(campo_data_situacao_agendada);
         campo_motivo_outraEscola = findViewById(R.id.formulario_Motivo_Matriculou_OutraEscola);
         campo_nome_outraEscola = findViewById(R.id.formulario_Matriculou_Nome_OutraEscola);
         campo_observacao = (TextInputLayout) findViewById(R.id.formulario_observacao);
@@ -538,21 +541,6 @@ public class Cadastro_Visita extends AppCompatActivity {
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-//        campo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                        month = month + 1;
-//                        String data = day + "/" + month + "/" + year;
-//                        campo_data.getEditText().setText(data);
-//                    }
-//                }, year, month, day);
-//                datePickerDialog.show();
-//            }
-//        });
 
         campo.setOnClickListener(new View.OnClickListener() {
             @Override
