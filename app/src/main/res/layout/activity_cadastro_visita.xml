@@ -330,6 +330,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint="Data de nascimento"
                             android:inputType="date" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -760,6 +761,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint="Data da visita"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -964,6 +966,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint="Data agendada"/>
                     </com.google.android.material.textfield.TextInputLayout>
 

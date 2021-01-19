@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
@@ -84,6 +86,7 @@ public class Cadastro_Visita extends AppCompatActivity {
     private FloatingActionButton galeriaDeFotos;
     private ImageView campoFotoFamilia;
     private Bitmap fotoDaFamilia;
+    Uri selectedImage;
 
     private TextInputLayout campo_nome_crianca;
     private TextInputLayout campo_dataNascimento_crianca;
@@ -182,6 +185,7 @@ public class Cadastro_Visita extends AppCompatActivity {
                 if (bundle != null) {
                     fotoDaFamilia = (Bitmap) bundle.get("data");
                     campoFotoFamilia.setImageBitmap(fotoDaFamilia);
+                    this.selectedImage = data.getData();
                 }
             }
         } else if (requestCode == RESULT_PEGA_FOTO_GALERIA && resulteCode == RESULT_OK) {
@@ -197,6 +201,7 @@ public class Cadastro_Visita extends AppCompatActivity {
             }
             stream = getContentResolver().openInputStream(data.getData());
             fotoDaFamilia = BitmapFactory.decodeStream(stream);
+            this.selectedImage = data.getData();
             campoFotoFamilia.setImageBitmap(fotoDaFamilia);
 
         } catch (FileNotFoundException e) {
@@ -287,9 +292,20 @@ public class Cadastro_Visita extends AppCompatActivity {
     private void preencheCamposEdicao() {
 
 
+        //Uri selectedImage = data.getData();
+        String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
+        Cursor cursor = getContentResolver().query(selectedImage,
+                filePathColumn, null, null, null);
+        cursor.moveToFirst();
 
-        campoFotoFamilia.setImageBitmap(visita.getFoto_familia());
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String imgDecodableString = cursor.getString(columnIndex);
+        cursor.close();
+
+        campoFotoFamilia.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+
+        //campoFotoFamilia.setImageBitmap(visita.getFoto_familia());
 
         campo_nome_crianca.getEditText().setText(visita.getNome_crianca());
         campo_dataNascimento_crianca.getEditText().setText(visita.getDataNascimento_crianca());
