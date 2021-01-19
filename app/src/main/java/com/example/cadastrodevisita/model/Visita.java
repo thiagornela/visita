@@ -47,7 +47,8 @@ public class Visita implements Parcelable {
 
     protected Visita(Parcel in) {
         id = in.readInt();
-        foto_familia = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
+        //foto_familia = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
+        foto_familia = in.readParcelable(Bitmap.class.getClassLoader());
         nome_crianca = in.readString();
         dataNascimento_crianca = in.readString();
         turma_crianca = in.readString();
@@ -83,7 +84,8 @@ public class Visita implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeValue(foto_familia);
+        //dest.writeValue(foto_familia);
+        dest.writeParcelable(foto_familia, flags);
         dest.writeString(nome_crianca);
         dest.writeString(dataNascimento_crianca);
         dest.writeString(turma_crianca);

@@ -27,7 +27,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 
+import com.example.cadastrodevisita.ListaVisitasView;
 import com.example.cadastrodevisita.R;
+import com.example.cadastrodevisita.adapter.ListaVisitasAdapter;
 import com.example.cadastrodevisita.dao.ColaboradorDAO;
 import com.example.cadastrodevisita.dao.ComoNosConheceuDAO;
 import com.example.cadastrodevisita.dao.SecretariaDAO;
@@ -76,6 +78,7 @@ public class Cadastro_Visita extends AppCompatActivity {
     private static final String TITULO_APPBAR_EDITA_VISITA = "Edição de visita";
     private static final String ERRO_FORMATACAO_CPF = "Erro formatação CPF";
     private final List<Validador> validadores = new ArrayList<>();
+    private final ListaVisitasView listaDeVisitas = new ListaVisitasView(this);
 
     private FloatingActionButton camera;
     private FloatingActionButton galeriaDeFotos;
@@ -283,6 +286,9 @@ public class Cadastro_Visita extends AppCompatActivity {
 
     private void preencheCamposEdicao() {
 
+
+
+
         campoFotoFamilia.setImageBitmap(visita.getFoto_familia());
 
         campo_nome_crianca.getEditText().setText(visita.getNome_crianca());
@@ -290,18 +296,15 @@ public class Cadastro_Visita extends AppCompatActivity {
         spinnerTurma_crianca.setText(visita.getTurma_crianca());                                    //ALTERAR
         //spinnerTurno_crianca.setText(visita.getTurno_crianca());                                    //ALTERAR
 
-        spinnerTurno_crianca.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Turno turnoSelecionado = (Turno) parent.getItemAtPosition(position);
-                turnoSelecionado.setTurno(parent.toString());
-            }
+        //int posicao = listaDeVisitas.indexOf(visita.getTurma_crianca());
+        //final List<Visita> visitasFiltradas = listaDeVisitas.listaDoAdapterFiltrado();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        final List<Visita> visitasFiltradas = listaDeVisitas.listaDoAdapterFiltrado();
+        final ListaVisitasAdapter listaAdapter = new ListaVisitasAdapter(visitasFiltradas, this);
 
-            }
-        });
+        int posicao = visitasFiltradas.indexOf(visita.getTurma_crianca());
+
+        spinnerTurma_crianca. setListSelection(posicao);
 
         if (visita.getTemIrmao()) {
             switchTem_irmao.setChecked(true);
@@ -389,7 +392,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         String telefone_celular_responsavel_2 = campo_telefone_celular_responsavel_2.getEditText().getText().toString();
         String cpf_responsavel_2 = campo_cpf_responsavel_2.getEditText().getText().toString();
 
-        String dataCadastro = campo_data_visita.getEditText().toString();
+        String dataCadastro = campo_data_visita.getEditText().getText().toString();
         String unidade = spinnerUnidade.getEditableText().toString();
         String secretaria = spinnerSecretaria.getEditableText().toString();
         String tipoAtendimento = spinnerTipoAtendimento.getEditableText().toString();
@@ -397,9 +400,9 @@ public class Cadastro_Visita extends AppCompatActivity {
         String comoNosConheceu = spinnerComoNosConheceu.getEditableText().toString();
         String situacao = spinnerSituacao.getEditableText().toString();
         String dataAgendada = campo_data_situacao_agendada.getEditText().getText().toString();
-        String motivo = campo_motivo_outraEscola.getEditText().toString();
-        String nome_outraEscola = campo_nome_outraEscola.getEditText().toString();
-        String observacao = campo_observacao.getEditText().toString();
+        String motivo = campo_motivo_outraEscola.getEditText().getText().toString();
+        String nome_outraEscola = campo_nome_outraEscola.getEditText().getText().toString();
+        String observacao = campo_observacao.getEditText().getText().toString();
 
         visita.setFoto_familia(fotoDaFamilia);
 
@@ -530,42 +533,42 @@ public class Cadastro_Visita extends AppCompatActivity {
     }
 
     private void pegaData(TextInputLayout campo_data) {
-        EditText campo = (EditText) campo_data.getEditText();
+        //EditText campo = (EditText) campo_data.getEditText();
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        campo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String data = day + "/" + month + "/" + year;
-                        campo_data.getEditText().setText(data);
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-            }
-        });
-
-//                .setOnClickListener(new View.OnClickListener() {
+//        campo_data.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public void onFocusChange(View v, boolean hasFocus) {
 //                DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
 //                    @Override
 //                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                        month=month+1;
-//                        String data = day+"/"+month+"/"+year;
+//                        month = month + 1;
+//                        String data = day + "/" + month + "/" + year;
 //                        campo_data.getEditText().setText(data);
-//
 //                    }
-//                }, year,month,day);
+//                }, year, month, day);
 //                datePickerDialog.show();
 //            }
 //        });
+
+        campo_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month=month+1;
+                        String data = day+"/"+month+"/"+year;
+                        campo_data.getEditText().setText(data);
+
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
+            }
+        });
     }
 
     private void configuraCampoObrigatorio(TextInputLayout campo_nome_crianca) {
