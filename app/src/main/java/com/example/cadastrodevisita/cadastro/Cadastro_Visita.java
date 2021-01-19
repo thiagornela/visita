@@ -533,13 +533,13 @@ public class Cadastro_Visita extends AppCompatActivity {
     }
 
     private void pegaData(TextInputLayout campo_data) {
-        //EditText campo = (EditText) campo_data.getEditText();
+        EditText campo = (EditText) campo_data.getEditText();
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-//        campo_data.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//        campo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //            @Override
 //            public void onFocusChange(View v, boolean hasFocus) {
 //                DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
@@ -554,7 +554,7 @@ public class Cadastro_Visita extends AppCompatActivity {
 //            }
 //        });
 
-        campo_data.setOnClickListener(new View.OnClickListener() {
+        campo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
