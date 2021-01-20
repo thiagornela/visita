@@ -1,6 +1,7 @@
 package com.example.cadastrodevisita.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,14 @@ import android.widget.TextView;
 import com.example.cadastrodevisita.R;
 import com.example.cadastrodevisita.model.Visita;
 
-import org.w3c.dom.Text;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import static com.example.cadastrodevisita.ui.activities.Constantes.SITUACAO_AMBIENTACAO_PARA;
 import static com.example.cadastrodevisita.ui.activities.Constantes.SITUACAO_CONTATO_ESCOLA_PARA;
@@ -24,6 +29,7 @@ public class ListaVisitasAdapter extends BaseAdapter {
 
     private List<Visita> visitas;
     private final Context context;
+    private Calendar dataAtual = Calendar.getInstance();
 
     public ListaVisitasAdapter(List<Visita> visitas, Context context) {
         this.visitas = visitas;
@@ -50,7 +56,11 @@ public class ListaVisitasAdapter extends BaseAdapter {
     public View getView(int posicao, View view, ViewGroup viewGroup) {
         View viewCriada = criaView(viewGroup);
         Visita visita = visitas.get(posicao);
-        vincula(viewCriada, visita);
+        try {
+            vincula(viewCriada, visita);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return viewCriada;
     }
 
@@ -59,7 +69,7 @@ public class ListaVisitasAdapter extends BaseAdapter {
                 .inflate(R.layout.item_visita, viewGroup, false);
     }
 
-    private void vincula(View view, Visita visita) {
+    private void vincula(View view, Visita visita) throws ParseException {
         ImageView imagemFamilia = view.findViewById(R.id.item_foto_familia);
         if (visita.getFoto_familia() != null)
             imagemFamilia.setImageBitmap(visita.getFoto_familia());
@@ -67,8 +77,8 @@ public class ListaVisitasAdapter extends BaseAdapter {
         unidade.setText(visita.getUnidade());
         TextView secretaria = view.findViewById(R.id.item_secretaria);
         secretaria.setText(visita.getSecrearia());
-        TextView dataVisita = view.findViewById(R.id.item_data_visita);
-        dataVisita.setText(visita.getDataCadastro());
+//        TextView dataVisita = view.findViewById(R.id.item_data_visita);
+//        dataVisita.setText(visita.getDataCadastro());
         TextView nome_crianca = view.findViewById(R.id.item_visita_nome_crianca);
         nome_crianca.setText(visita.getNome_crianca());
         TextView turma = view.findViewById(R.id.item_visita_turma);
@@ -103,7 +113,35 @@ public class ListaVisitasAdapter extends BaseAdapter {
         if (visita.getTemIrmao()) {
             temIrmao.setVisibility(view.VISIBLE);
         }
+
+        verificaDataMudaCor(view, visita);
+
     }
+
+
+
+
+    private void verificaDataMudaCor(View view, Visita visita) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault());
+        dataAtual.setTime(sdf.parse(visita.getDataAgendada()));
+        View barra_indicadora = view.findViewById(R.id.item_barra_indicadora_situacao);
+        if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
+            if (dataAtual.equals(visita.getDataAgendada())) {
+                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+            }
+                else if (dataAtual.after(visita.getDataAgendada())){
+                    barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+                }
+                else if (dataAtual.before(visita.getDataAgendada())) {
+                    barra_indicadora.setBackgroundColor(Color.parseColor("#FFE500"));
+                }
+                else
+                    barra_indicadora.setBackgroundColor(Color.parseColor("#12C119"));
+            }
+
+        notifyDataSetChanged();
+        }
+
 
     public void atualiza(List<Visita> visitas) {
         List<Visita> visitas_filtradas = new ArrayList<>();

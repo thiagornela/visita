@@ -9,14 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -49,14 +47,11 @@ import com.example.cadastrodevisita.model.Turma;
 import com.example.cadastrodevisita.model.Turno;
 import com.example.cadastrodevisita.model.Unidade;
 import com.example.cadastrodevisita.model.Visita;
-import com.example.cadastrodevisita.ui.activities.MainActivity;
 import com.example.cadastrodevisita.validator.ValidaCpf;
 import com.example.cadastrodevisita.validator.ValidaEmail;
 import com.example.cadastrodevisita.validator.ValidaTelefoneComDdd;
 import com.example.cadastrodevisita.validator.ValidacaCampoObrigatorio;
 import com.example.cadastrodevisita.validator.Validador;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -86,6 +81,7 @@ public class Cadastro_Visita extends AppCompatActivity {
     private FloatingActionButton galeriaDeFotos;
     private ImageView campoFotoFamilia;
     private Bitmap fotoDaFamilia;
+    private String imgDecodableString;
     Uri selectedImage;
 
     private TextInputLayout campo_nome_crianca;
@@ -190,6 +186,28 @@ public class Cadastro_Visita extends AppCompatActivity {
             }
         } else if (requestCode == RESULT_PEGA_FOTO_GALERIA && resulteCode == RESULT_OK) {
             carregarImagemGaleria(data);
+            Uri selectedImage = data.getData();
+            Bitmap   bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            imgDecodableString =  selectedImage.toString(); // o caminho deve estar aqui
+            campoFotoFamilia.setImageBitmap(bitmap);
+
+//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+//
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            imgDecodableString = cursor.getString(columnIndex);
+//            cursor.close(); // aqui voce tem o caminho -> essa string voce precisa armazenar na sua aplicação para que consiga trabalhar com ela sem problemas maiores
+//
+//            campoFotoFamilia.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+
         }
     }
 
@@ -255,7 +273,7 @@ public class Cadastro_Visita extends AppCompatActivity {
                 campo_data_situacao_agendada.setVisibility(View.GONE);
                 campo_nome_outraEscola.setVisibility(View.VISIBLE);
                 campo_motivo_outraEscola.setVisibility(View.VISIBLE);
-            } else{
+            } else {
                 campo_data_situacao_agendada.setVisibility(View.GONE);
                 campo_nome_outraEscola.setVisibility(View.GONE);
                 campo_motivo_outraEscola.setVisibility(View.GONE);
@@ -264,44 +282,19 @@ public class Cadastro_Visita extends AppCompatActivity {
         });
     }
 
-
-//    private void carregaVisita() {
-//        Intent dados = getIntent();
-//        if (dados.hasExtra(CHAVE_VISITA)) {
-//            setTitle(TITULO_APPBAR_EDITA_VISITA);
-//            visita = (Visita) dados.getSerializableExtra(CHAVE_VISITA);
-//            preencheCamposEdicao();
-//        } else {
-//            setTitle(TITULO_APPBAR_NOVA_VISITA);
-//            visita = new Visita();
-//        }
-//    }
-
     private void carregaVisita() {
         Intent dados = getIntent();
-        if(dados.hasExtra(CHAVE_VISITA)){
+        if (dados.hasExtra(CHAVE_VISITA)) {
             setTitle(TITULO_APPBAR_EDITA_VISITA);
             visita = dados.getParcelableExtra(CHAVE_VISITA);
             preencheCamposEdicao();
-        } else{
+        } else {
             setTitle(TITULO_APPBAR_NOVA_VISITA);
             visita = new Visita();
         }
     }
 
     private void preencheCamposEdicao() {
-
-
-        //Uri selectedImage = data.getData();
-        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-        Cursor cursor = getContentResolver().query(selectedImage,
-                filePathColumn, null, null, null);
-        cursor.moveToFirst();
-
-        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-        String imgDecodableString = cursor.getString(columnIndex);
-        cursor.close();
 
         campoFotoFamilia.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
 
@@ -320,7 +313,7 @@ public class Cadastro_Visita extends AppCompatActivity {
 
         int posicao = visitasFiltradas.indexOf(visita.getTurma_crianca());
 
-        spinnerTurma_crianca. setListSelection(posicao);
+        spinnerTurma_crianca.setListSelection(posicao);
 
         if (visita.getTemIrmao()) {
             switchTem_irmao.setChecked(true);
@@ -343,7 +336,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         campo_telefone_celular_responsavel_2.getEditText().setText(visita.getTelefone_celular_responsavel_2());
         campo_cpf_responsavel_2.getEditText().setText(visita.getCpf_responsavel_2());
 
-        campo_data_visita.getEditText().setText(visita.getDataCadastro());
+        campo_data_visita.getEditText().setText((CharSequence) visita.getDataCadastro());
         spinnerUnidade.setText(visita.getUnidade());                                                //ALTERAR
         spinnerSecretaria.setText(visita.getSecrearia());                                           //ALTERAR
         spinnerTipoAtendimento.setText(visita.getTipoAtendimento());                                //ALTERAR
@@ -408,6 +401,7 @@ public class Cadastro_Visita extends AppCompatActivity {
         String telefone_celular_responsavel_2 = campo_telefone_celular_responsavel_2.getEditText().getText().toString();
         String cpf_responsavel_2 = campo_cpf_responsavel_2.getEditText().getText().toString();
 
+        //Date dataCadastro = (Date) campo_data_visita.getEditText().getText();
         String dataCadastro = campo_data_visita.getEditText().getText().toString();
         String unidade = spinnerUnidade.getEditableText().toString();
         String secretaria = spinnerSecretaria.getEditableText().toString();
@@ -563,13 +557,13 @@ public class Cadastro_Visita extends AppCompatActivity {
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Cadastro_Visita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month=month+1;
-                        String data = day+"/"+month+"/"+year;
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month + 1;
+                        String data = day + "/" + month + "/" + year;
                         campo_data.getEditText().setText(data);
 
                     }
-                }, year,month,day);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });

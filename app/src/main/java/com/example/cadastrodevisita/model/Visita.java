@@ -6,6 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Visita implements Parcelable {
 
@@ -39,6 +40,7 @@ public class Visita implements Parcelable {
     private String dataAgendada;
     private String observacao;
     private String dataCadastro;
+    //private Date dataCadastro;
     private String motivo_outraEscola;
     private String nome_outraEscola;
 
@@ -77,6 +79,7 @@ public class Visita implements Parcelable {
         dataAgendada = in.readString();
         observacao = in.readString();
         dataCadastro = in.readString();
+        //dataCadastro = (Date) in.readSerializable();
         motivo_outraEscola = in.readString();
         nome_outraEscola = in.readString();
     }
@@ -113,6 +116,8 @@ public class Visita implements Parcelable {
         dest.writeString(situacao);
         dest.writeString(dataAgendada);
         dest.writeString(observacao);
+        //dest.writeString(dataCadastro);
+        //dest.writeLong(dataCadastro); posso tentar depois
         dest.writeString(dataCadastro);
         dest.writeString(motivo_outraEscola);
         dest.writeString(nome_outraEscola);
@@ -135,11 +140,16 @@ public class Visita implements Parcelable {
         }
     };
 
+    //public Date getDataCadastro() {        return dataCadastro;    }
     public String getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(String dataCadastro) {
+//    public void setDataCadastro(Date dataCadastro) {
+//        this.dataCadastro = dataCadastro;
+//    }
+
+    public void setDataCadastro(String  dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
