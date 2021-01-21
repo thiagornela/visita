@@ -137,7 +137,7 @@ public class ListaVisitasAdapter extends BaseAdapter {
 
     private void verificaDataMudaCor(View view, Visita visita) throws ParseException {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Date dataAgendadaFormatada = sdf.parse(visita.getDataAgendada());
 
@@ -153,10 +153,9 @@ public class ListaVisitasAdapter extends BaseAdapter {
                 barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
             } else if (dataAtualFormatada.before(dataAgendadaFormatada)) {
                 barra_indicadora.setBackgroundColor(Color.parseColor("#FFE500"));
-            } else
-                barra_indicadora.setBackgroundColor(Color.parseColor("#12C119"));
+            }
+            notifyDataSetChanged();
         }
-        notifyDataSetChanged();
     }
 
 

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -46,6 +47,7 @@ import com.example.cadastrodevisita.model.Turma;
 import com.example.cadastrodevisita.model.Turno;
 import com.example.cadastrodevisita.model.Unidade;
 import com.example.cadastrodevisita.model.Visita;
+import com.example.cadastrodevisita.validator.ValidaCampoSituacao;
 import com.example.cadastrodevisita.validator.ValidaCpf;
 import com.example.cadastrodevisita.validator.ValidaEmail;
 import com.example.cadastrodevisita.validator.ValidaTelefoneComDdd;
@@ -264,20 +266,40 @@ public class Cadastro_Visita extends AppCompatActivity {
     private void verificaSituacao() {
         spinnerSituacao.setOnItemClickListener((parent, view, position, id) -> {
             String situacao_selecionada = spinnerSituacao.getEditableText().toString();
+
             if (situacao_selecionada.equals(SITUACAO_CONTATO_ESCOLA_PARA) || situacao_selecionada.equals(SITUACAO_AMBIENTACAO_PARA)) {
                 campo_data_situacao_agendada.setVisibility(view.VISIBLE);
                 campo_nome_outraEscola.setVisibility(View.GONE);
                 campo_motivo_outraEscola.setVisibility(View.GONE);
-            } else if (situacao_selecionada.equals(SITUACAO_MATRICULOU_OUTRA_ESCOLA)) {
+                configuraCampoObrigatorioSituacao(campo_data_situacao_agendada, true);
+
+            }
+            else if (situacao_selecionada.equals(SITUACAO_MATRICULOU_OUTRA_ESCOLA)) {
                 campo_data_situacao_agendada.setVisibility(View.GONE);
                 campo_nome_outraEscola.setVisibility(View.VISIBLE);
                 campo_motivo_outraEscola.setVisibility(View.VISIBLE);
-            } else {
+                configuraCampoObrigatorioSituacao(campo_data_situacao_agendada, false);
+            }
+            else {
                 campo_data_situacao_agendada.setVisibility(View.GONE);
                 campo_nome_outraEscola.setVisibility(View.GONE);
                 campo_motivo_outraEscola.setVisibility(View.GONE);
+                configuraCampoObrigatorioSituacao(campo_data_situacao_agendada, false);
             }
+        });
+    }
 
+    private void configuraCampoObrigatorioSituacao(TextInputLayout situacao, boolean temData) {
+        EditText campoDataAgendada = situacao.getEditText();
+        final ValidaCampoSituacao validador = new ValidaCampoSituacao(situacao, temData);
+        validadores.add(validador);
+        campoDataAgendada.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validador.estaValido();
+                }
+            }
         });
     }
 
@@ -295,32 +317,32 @@ public class Cadastro_Visita extends AppCompatActivity {
 
     private void preencheCamposEdicao() {
 
-        campoFotoFamilia.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+        campoFotoFamilia.setImageBitmap(visita.getFoto_familia());
 
         //campoFotoFamilia.setImageBitmap(visita.getFoto_familia());
 
         campo_nome_crianca.getEditText().setText(visita.getNome_crianca());
         campo_dataNascimento_crianca.getEditText().setText(visita.getDataNascimento_crianca());
-        spinnerTurma_crianca.setText(visita.getTurma_crianca());                                    //ALTERAR
-        //spinnerTurno_crianca.setText(visita.getTurno_crianca());                                    //ALTERAR
+        spinnerTurma_crianca.setText(visita.getTurma_crianca(), false);
+        spinnerTurno_crianca.setText(visita.getTurno_crianca(), false);
 
         //int posicao = listaDeVisitas.indexOf(visita.getTurma_crianca());
         //final List<Visita> visitasFiltradas = listaDeVisitas.listaDoAdapterFiltrado();
 
-        final List<Visita> visitasFiltradas = listaDeVisitas.listaDoAdapterFiltrado();
-        final ListaVisitasAdapter listaAdapter = new ListaVisitasAdapter(visitasFiltradas, this);
-
-        int posicao = visitasFiltradas.indexOf(visita.getTurma_crianca());
-
-        spinnerTurma_crianca.setListSelection(posicao);
+//        final List<Visita> visitasFiltradas = listaDeVisitas.listaDoAdapterFiltrado();
+//        final ListaVisitasAdapter listaAdapter = new ListaVisitasAdapter(visitasFiltradas, this);
+//
+//        int posicao = visitasFiltradas.indexOf(visita.getTurma_crianca());
+//
+//        spinnerTurma_crianca.setListSelection(posicao);
 
         if (visita.getTemIrmao()) {
             switchTem_irmao.setChecked(true);
             cardview_irmao.setVisibility(View.VISIBLE);
             campo_nome_Irmao.getEditText().setText(visita.getNome_irmao());
             campo_dataNascimento_Irmao.getEditText().setText(visita.getDataNascimento_irmao());
-            //spinnerTurma_irmao.setText(visita.getTurma_irmao());                                    //ALTERAR
-            //spinnerTurno_irmao.setText(visita.getTurno_irmao());                                    //ALTERAR
+            spinnerTurma_irmao.setText(visita.getTurma_irmao(), false);                                    //ALTERAR
+            spinnerTurno_irmao.setText(visita.getTurno_irmao(), false);                                    //ALTERAR
         }
 
         campo_nome_responsavel_1.getEditText().setText(visita.getNome_responsavel_1());
@@ -336,21 +358,20 @@ public class Cadastro_Visita extends AppCompatActivity {
         campo_cpf_responsavel_2.getEditText().setText(visita.getCpf_responsavel_2());
 
         campo_data_visita.getEditText().setText((CharSequence) visita.getDataCadastro());
-        spinnerUnidade.setText(visita.getUnidade());                                                //ALTERAR
-        spinnerSecretaria.setText(visita.getSecrearia());                                           //ALTERAR
-        spinnerTipoAtendimento.setText(visita.getTipoAtendimento());                                //ALTERAR
-        spinnerColaborador.setText(visita.getColaborador());                                        //ALTERAR
-        spinnerComoNosConheceu.setText(visita.getComoNosConheceu());                                //ALTERAR
+        spinnerUnidade.setText(visita.getUnidade(), false);
+        spinnerSecretaria.setText(visita.getSecrearia(), false);
+        spinnerTipoAtendimento.setText(visita.getTipoAtendimento(), false);
+        spinnerColaborador.setText(visita.getColaborador(), false);
+        spinnerComoNosConheceu.setText(visita.getComoNosConheceu(), false);
 
         if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
-            spinnerSituacao.setText(visita.getSituacao());                                          //ALTERAR
+            spinnerSituacao.setText(visita.getSituacao(), false);
             campo_data_situacao_agendada.setVisibility(View.VISIBLE);
             campo_data_situacao_agendada.getEditText().setText(visita.getDataAgendada());
         }
 
         campo_observacao.getEditText().setText(visita.getObservacao());
     }
-
 
     private void finalizaFormulario() {
         preencheVisitaFinalizada();
@@ -413,7 +434,8 @@ public class Cadastro_Visita extends AppCompatActivity {
         String nome_outraEscola = campo_nome_outraEscola.getEditText().getText().toString();
         String observacao = campo_observacao.getEditText().getText().toString();
 
-        visita.setFoto_familia(fotoDaFamilia);
+        if (fotoDaFamilia != null)
+            visita.setFoto_familia(fotoDaFamilia);
 
         visita.setNome_crianca(nome);
         visita.setDataNascimento_crianca(data_nascimento);
@@ -469,6 +491,11 @@ public class Cadastro_Visita extends AppCompatActivity {
         spinnerTurma_crianca.setAdapter(arrayAdapterTurma);
         ArrayAdapter<Turno> arrayAdapterTurno = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turnoDAO.todos());
         spinnerTurno_crianca.setAdapter(arrayAdapterTurno);
+
+//        ArrayAdapter<Turma> arrayAdapterTurmaIrmao = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turmaDAO.todos());
+//        spinnerTurma_irmao.setAdapter(arrayAdapterTurmaIrmao);
+//        ArrayAdapter<Turno> arrayAdapterTurnoIrmao = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, turnoDAO.todos());
+//        spinnerTurno_irmao.setAdapter(arrayAdapterTurnoIrmao);
 
         switchTem_irmao = findViewById(R.id.switch_tem_irmao);
         cardview_irmao = findViewById(R.id.cardview_irmao);
@@ -568,9 +595,9 @@ public class Cadastro_Visita extends AppCompatActivity {
         });
     }
 
-    private void configuraCampoObrigatorio(TextInputLayout campo_nome_crianca) {
-        EditText campoNome = campo_nome_crianca.getEditText();
-        final ValidacaCampoObrigatorio validador = new ValidacaCampoObrigatorio(campo_nome_crianca);
+    private void configuraCampoObrigatorio(TextInputLayout campo) {
+        EditText campoNome = campo.getEditText();
+        final ValidacaCampoObrigatorio validador = new ValidacaCampoObrigatorio(campo);
         validadores.add(validador);
         campoNome.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
