@@ -8,7 +8,7 @@ import br.com.caelum.stella.format.CPFFormatter;
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
 
-public class ValidaCpf implements Validador{
+public class ValidaCpf implements Validador {
 
     private static final String CPF_INVALIDO = "CPF inválido";
     public static final String DEVE_TER_11_DIGITOS = "CPF precisa ter 11 dígitos";
@@ -22,7 +22,7 @@ public class ValidaCpf implements Validador{
 
 
     private boolean validaCalculoCpf(String cpf) {
-        if(cpf.length() != 0) {
+        if (cpf.length() != 0) {
             try {
                 CPFValidator cpfValidator = new CPFValidator();
                 cpfValidator.assertValid(cpf);
@@ -39,7 +39,7 @@ public class ValidaCpf implements Validador{
     }
 
     private boolean validaCampoComOnzeDigitos(String cpf) {
-        if(cpf.length() == 0)
+        if (cpf.length() == 0)
             return true;
         else if (cpf.length() != 11) {
             textInputCPF.setError(DEVE_TER_11_DIGITOS);
@@ -60,7 +60,7 @@ public class ValidaCpf implements Validador{
         }
         if (!validaCampoComOnzeDigitos(cpfSemFormato)) return false;
         if (!validaCalculoCpf(cpfSemFormato)) return false;
-        if(cpf.length() != 0)
+        if (cpf.length() != 0)
             adicionaFormatacao(cpfSemFormato);
         removeErro();
         return true;

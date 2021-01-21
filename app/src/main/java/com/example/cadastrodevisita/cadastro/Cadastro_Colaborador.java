@@ -1,11 +1,10 @@
 package com.example.cadastrodevisita.cadastro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastrodevisita.R;
 import com.example.cadastrodevisita.dao.ColaboradorDAO;

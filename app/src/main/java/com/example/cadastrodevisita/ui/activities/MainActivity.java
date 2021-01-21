@@ -13,19 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cadastrodevisita.ListaVisitasView;
 import com.example.cadastrodevisita.R;
 import com.example.cadastrodevisita.adapter.ListaVisitasAdapter;
-import com.example.cadastrodevisita.cadastro.Cadastro_Colaborador;
-import com.example.cadastrodevisita.cadastro.Cadastro_Como_Nos_Conheceu;
-import com.example.cadastrodevisita.cadastro.Cadastro_Secretaria;
-import com.example.cadastrodevisita.cadastro.Cadastro_Situacao;
-import com.example.cadastrodevisita.cadastro.Cadastro_Tipo_Atendimento;
-import com.example.cadastrodevisita.cadastro.Cadastro_Turma;
-import com.example.cadastrodevisita.cadastro.Cadastro_Turno;
-import com.example.cadastrodevisita.cadastro.Cadastro_Unidade;
 import com.example.cadastrodevisita.cadastro.Cadastro_Visita;
-import com.example.cadastrodevisita.dao.VisitaDAO;
 import com.example.cadastrodevisita.model.Visita;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -43,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
         configuraLista();
         configuraBotoesMenu();
-
-
 
     }
 
@@ -68,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private void configuraLista() {
         ListView listaDeVisitas = findViewById(R.id.lista_visitas_listview);
         final List<Visita> visitasFiltradas = listaVisitasView.listaDoAdapterFiltrado();
-        listaDeVisitas.setAdapter(new ListaVisitasAdapter(visitasFiltradas, this));
+        //listaDeVisitas.setAdapter(new ListaVisitasAdapter(visitasFiltradas, this));
+        listaVisitasView.configuraAdapter(listaDeVisitas);
         listaDeVisitas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -82,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void vaiParaEditaVisita(Visita visitaClicada) {
         Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
-        intent.putExtra(CHAVE_VISITA,visitaClicada);
+        intent.putExtra(CHAVE_VISITA, visitaClicada);
         //intent.putExtra(CHAVE_VISITA, visitaClicada);
         startActivity(intent);
     }

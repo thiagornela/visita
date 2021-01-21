@@ -1,10 +1,8 @@
 package com.example.cadastrodevisita.validator;
 
-import android.widget.EditText;
-
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ValidaEmail implements Validador{
+public class ValidaEmail implements Validador {
 
     private final TextInputLayout textInputEmail;
 
@@ -12,8 +10,8 @@ public class ValidaEmail implements Validador{
         this.textInputEmail = textInputEmail;
     }
 
-    private boolean validaPadrao(String email){
-        if (email.matches(".+@.+\\..+" ) || email.equals("")){
+    private boolean validaPadrao(String email) {
+        if (email.matches(".+@.+\\..+") || email.equals("")) {
             return true;
         }
         textInputEmail.setError("E-mail inválido");
@@ -21,7 +19,7 @@ public class ValidaEmail implements Validador{
     }
 
     @Override
-    public boolean estaValido(){
+    public boolean estaValido() {
         String email = textInputEmail.getEditText().getText().toString();
         if (!validaPadrao(email)) return false;
         removeErro();

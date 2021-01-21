@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class RetornaDataAtual {
 
-    public static String dataAtual(){
+    public static String dataAtual() {
         LocalDateTime agora = LocalDateTime.now();
 
         // formatar a data

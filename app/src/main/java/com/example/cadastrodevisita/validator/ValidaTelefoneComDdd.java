@@ -1,7 +1,5 @@
 package com.example.cadastrodevisita.validator;
 
-import android.widget.EditText;
-
 import com.example.cadastrodevisita.formatter.FormataTelefoneComDdd;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -20,11 +18,11 @@ public class ValidaTelefoneComDdd implements Validador {
         if (digitos == 10 || digitos == 11) {
             return true;
         }
-        if (digitos == 0){
+        if (digitos == 0) {
             return true;
-        }else {
-                textInputTelefoneComDdd.setError(DEVE_TER_10_OU_11_DIGITOS);
-                return false;
+        } else {
+            textInputTelefoneComDdd.setError(DEVE_TER_10_OU_11_DIGITOS);
+            return false;
         }
     }
 

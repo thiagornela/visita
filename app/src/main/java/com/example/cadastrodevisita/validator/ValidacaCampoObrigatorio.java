@@ -1,10 +1,8 @@
 package com.example.cadastrodevisita.validator;
 
-import android.widget.EditText;
-
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ValidacaCampoObrigatorio implements Validador{
+public class ValidacaCampoObrigatorio implements Validador {
 
     private static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
     private final TextInputLayout textInputCampo;

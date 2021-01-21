@@ -15,10 +15,9 @@ import com.example.cadastrodevisita.model.Visita;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Clock;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,7 +28,6 @@ public class ListaVisitasAdapter extends BaseAdapter {
 
     private List<Visita> visitas;
     private final Context context;
-    private Calendar dataAtual = Calendar.getInstance();
 
     public ListaVisitasAdapter(List<Visita> visitas, Context context) {
         this.visitas = visitas;
@@ -119,28 +117,47 @@ public class ListaVisitasAdapter extends BaseAdapter {
     }
 
 
-
+//    private void verificaDataMudaCor(View view, Visita visita) throws ParseException {
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault());
+//        dataAtual.setTime(sdf.parse(visita.getDataAgendada()));
+//        View barra_indicadora = view.findViewById(R.id.item_barra_indicadora_situacao);
+//        if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
+//            if (dataAtual.equals(visita.getDataAgendada())) {
+//                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+//            } else if (dataAtual.after(visita.getDataAgendada())) {
+//                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+//            } else if (dataAtual.before(visita.getDataAgendada())) {
+//                barra_indicadora.setBackgroundColor(Color.parseColor("#FFE500"));
+//            } else
+//                barra_indicadora.setBackgroundColor(Color.parseColor("#12C119"));
+//        }
+//
+//        notifyDataSetChanged();
+//    }
 
     private void verificaDataMudaCor(View view, Visita visita) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault());
-        dataAtual.setTime(sdf.parse(visita.getDataAgendada()));
-        View barra_indicadora = view.findViewById(R.id.item_barra_indicadora_situacao);
-        if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
-            if (dataAtual.equals(visita.getDataAgendada())) {
-                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
-            }
-                else if (dataAtual.after(visita.getDataAgendada())){
-                    barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
-                }
-                else if (dataAtual.before(visita.getDataAgendada())) {
-                    barra_indicadora.setBackgroundColor(Color.parseColor("#FFE500"));
-                }
-                else
-                    barra_indicadora.setBackgroundColor(Color.parseColor("#12C119"));
-            }
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
 
-        notifyDataSetChanged();
+        Date dataAgendadaFormatada = sdf.parse(visita.getDataAgendada());
+
+        String DataAtualString = sdf.format(cal.getTime());
+        Date dataAtualFormatada = sdf.parse(DataAtualString);
+
+        View barra_indicadora = view.findViewById(R.id.item_barra_indicadora_situacao);
+
+        if (visita.getSituacao().equals(SITUACAO_CONTATO_ESCOLA_PARA) || visita.getSituacao().equals(SITUACAO_AMBIENTACAO_PARA)) {
+            if (dataAtualFormatada.equals(dataAgendadaFormatada)) {
+                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+            } else if (dataAtualFormatada.after(dataAgendadaFormatada)) {
+                barra_indicadora.setBackgroundColor(Color.parseColor("#FA0101"));
+            } else if (dataAtualFormatada.before(dataAgendadaFormatada)) {
+                barra_indicadora.setBackgroundColor(Color.parseColor("#FFE500"));
+            } else
+                barra_indicadora.setBackgroundColor(Color.parseColor("#12C119"));
         }
+        notifyDataSetChanged();
+    }
 
 
     public void atualiza(List<Visita> visitas) {
@@ -158,4 +175,5 @@ public class ListaVisitasAdapter extends BaseAdapter {
     public List<Visita> getVisitas() {
         return visitas;
     }
+
 }

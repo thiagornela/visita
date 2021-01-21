@@ -40,7 +40,7 @@
                 android:id="@+id/item_barra_indicadora_situacao"
                 android:layout_width="15dp"
                 android:layout_height="0dp"
-                android:background="#FFE500"
+                android:background="#12C119"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

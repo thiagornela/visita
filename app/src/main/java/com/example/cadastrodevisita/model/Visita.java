@@ -1,12 +1,8 @@
 package com.example.cadastrodevisita.model;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.io.Serializable;
-import java.util.Date;
 
 public class Visita implements Parcelable {
 
@@ -149,7 +145,7 @@ public class Visita implements Parcelable {
 //        this.dataCadastro = dataCadastro;
 //    }
 
-    public void setDataCadastro(String  dataCadastro) {
+    public void setDataCadastro(String dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 

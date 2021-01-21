@@ -28,11 +28,11 @@ public class ListaVisitasView {
         adapter.atualiza(dao.todos());
     }
 
-//    public void configuraAdapter(ListView listaDeVisitas) {
-//        listaDeVisitas.setAdapter(adapter);
-//    }
+    public void configuraAdapter(ListView listaDeVisitas) {
+        listaDeVisitas.setAdapter(adapter);
+    }
 
-    public List<Visita> listaDoAdapterFiltrado(){
+    public List<Visita> listaDoAdapterFiltrado() {
         return adapter.getVisitas();
     }
 

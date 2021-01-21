@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -187,13 +186,13 @@ public class Cadastro_Visita extends AppCompatActivity {
         } else if (requestCode == RESULT_PEGA_FOTO_GALERIA && resulteCode == RESULT_OK) {
             carregarImagemGaleria(data);
             Uri selectedImage = data.getData();
-            Bitmap   bitmap = null;
+            Bitmap bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imgDecodableString =  selectedImage.toString(); // o caminho deve estar aqui
+            imgDecodableString = selectedImage.toString(); // o caminho deve estar aqui
             campoFotoFamilia.setImageBitmap(bitmap);
 
 //            String[] filePathColumn = { MediaStore.Images.Media.DATA };

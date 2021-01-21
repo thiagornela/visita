@@ -1,28 +1,21 @@
 package com.example.cadastrodevisita;
 
 import android.app.Application;
-import android.graphics.Bitmap;
 
 import com.example.cadastrodevisita.dao.ColaboradorDAO;
 import com.example.cadastrodevisita.dao.ComoNosConheceuDAO;
 import com.example.cadastrodevisita.dao.SecretariaDAO;
-import com.example.cadastrodevisita.dao.SituacaoDAO;
 import com.example.cadastrodevisita.dao.TipoAtendimentoDAO;
 import com.example.cadastrodevisita.dao.TurmaDAO;
 import com.example.cadastrodevisita.dao.TurnoDAO;
 import com.example.cadastrodevisita.dao.UnidadeDAO;
-import com.example.cadastrodevisita.dao.VisitaDAO;
 import com.example.cadastrodevisita.model.Colaborador;
 import com.example.cadastrodevisita.model.ComoNosConheceu;
 import com.example.cadastrodevisita.model.Secretaria;
-import com.example.cadastrodevisita.model.Situacao;
 import com.example.cadastrodevisita.model.TipoAtendimento;
 import com.example.cadastrodevisita.model.Turma;
 import com.example.cadastrodevisita.model.Turno;
 import com.example.cadastrodevisita.model.Unidade;
-import com.example.cadastrodevisita.model.Visita;
-
-import java.util.Calendar;
 
 public class VisitaApplication extends Application {
 
