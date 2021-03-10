@@ -8,11 +8,11 @@ import br.com.caelum.stella.format.CPFFormatter;
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
 
-public class ValidaCpf implements Validador {
+import static com.example.cadastrodevisita.ui.Constantes.CPF_INVALIDO;
+import static com.example.cadastrodevisita.ui.Constantes.DEVE_TER_11_DIGITOS;
+import static com.example.cadastrodevisita.ui.Constantes.ERRO_FORMATACAO_CPF;
 
-    private static final String CPF_INVALIDO = "CPF inválido";
-    public static final String DEVE_TER_11_DIGITOS = "CPF precisa ter 11 dígitos";
-    private static final String ERRO_FORMATACAO_CPF = "Erro formatação CPF";
+public class ValidaCpf implements Validador {
     private TextInputLayout textInputCPF;
     CPFFormatter formatador = new CPFFormatter();
 

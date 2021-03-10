@@ -7,14 +7,6 @@ public class Unidade  implements Serializable {
     private String unidade;
     private int id = 0;
 
-    public Unidade() {
-        this.unidade = unidade;
-    }
-
-    public Unidade(String unidade) {
-        this.unidade = unidade;
-    }
-
     public String getUnidade() {
         return unidade;
     }
@@ -34,5 +26,9 @@ public class Unidade  implements Serializable {
     @Override
     public String toString() {
         return unidade;
+    }
+
+    public boolean temIdValido() {
+        return id > 0;
     }
 }

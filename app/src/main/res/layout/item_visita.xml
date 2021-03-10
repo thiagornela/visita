@@ -3,41 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_imagem_familia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_foto_familia"
                 android:layout_width="190dp"
                 android:layout_height="111dp"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_situacao"
+                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_da_situacao"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/item_barra_indicadora_situacao"
+                app:layout_constraintTop_toTopOf="@+id/item_barra_indicadora_da_situacao"
                 tools:src="@mipmap/ic_launcher_round" />
 
             <View
-                android:id="@+id/item_barra_indicadora_situacao"
+                android:id="@+id/item_barra_indicadora_da_situacao"
                 android:layout_width="15dp"
                 android:layout_height="0dp"
                 android:background="#12C119"
@@ -45,58 +43,50 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/item_button_atendimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:focusable="false"
-                android:text="Atendimento"
-                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_situacao"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/item_visita_unidade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
-                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
-                app:layout_constraintTop_toBottomOf="@+id/item_button_atendimento"
+                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_da_situacao"
+                app:layout_constraintStart_toEndOf="@+id/item_foto_familia"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Buritis" />
 
             <TextView
                 android:id="@+id/item_secretaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="3dp"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
-                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
+                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_da_situacao"
+                app:layout_constraintStart_toEndOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_unidade"
                 tools:text="Alessandra" />
 
             <TextView
-                android:id="@+id/item_data_visita"
+                android:id="@+id/item_data_do_cadastro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="3dp"
+                android:textColor="#FF000000"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/item_button_atendimento"
-                app:layout_constraintStart_toStartOf="@+id/item_button_atendimento"
+                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_da_situacao"
+                app:layout_constraintStart_toEndOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_secretaria"
                 tools:text="30/12/2021" />
-            <!--                android:textStyle="bold"-->
+
             <TextView
                 android:id="@+id/item_visita_nome_crianca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_foto_familia"
@@ -107,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
@@ -119,6 +110,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:text="-"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_visita_turma"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca" />
@@ -130,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_tracinho"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_crianca"
@@ -142,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Responsável 1: "
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_turma" />
@@ -151,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_responsavel_textview"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_turma"
@@ -161,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="#1B508C"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
@@ -173,6 +169,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:text="|"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_visita_telefone_fixo"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1" />
@@ -183,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
+                android:textColor="#1B508C"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/item_barrinha_telefone"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_nome_responsavel_1"
@@ -193,6 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="#1B508C"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/item_foto_familia"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_telefone_fixo"
@@ -204,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="8dp"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -217,6 +217,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="#1B508C"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="gone"
@@ -231,11 +232,11 @@
                 android:layout_marginBottom="5dp"
                 android:checked="true"
                 android:clickable="false"
+                android:focusable="false"
                 android:text="Tem irmão(ã)"
                 android:visibility="gone"
-                android:focusable="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_situacao"
+                app:layout_constraintEnd_toStartOf="@+id/item_barra_indicadora_da_situacao"
                 app:layout_constraintTop_toBottomOf="@+id/item_visita_situacao" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

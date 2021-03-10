@@ -2,9 +2,10 @@ package com.example.cadastrodevisita.validator;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import static com.example.cadastrodevisita.ui.Constantes.CAMPO_OBRIGATORIO;
+
 public class ValidacaCampoObrigatorio implements Validador {
 
-    private static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
     private final TextInputLayout textInputCampo;
 
     public ValidacaCampoObrigatorio(TextInputLayout textInputCampo) {

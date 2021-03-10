@@ -2,6 +2,8 @@ package com.example.cadastrodevisita.validator;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import static com.example.cadastrodevisita.ui.Constantes.E_MAIL_INVALIDO;
+
 public class ValidaEmail implements Validador {
 
     private final TextInputLayout textInputEmail;
@@ -14,7 +16,7 @@ public class ValidaEmail implements Validador {
         if (email.matches(".+@.+\\..+") || email.equals("")) {
             return true;
         }
-        textInputEmail.setError("E-mail inválido");
+        textInputEmail.setError(E_MAIL_INVALIDO);
         return false;
     }
 

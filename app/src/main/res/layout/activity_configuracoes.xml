@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F4F6"
+    tools:context=".ui.activities.Configuracoes">
+
+    <Button
+        android:id="@+id/config_cadastrosGerais"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:drawableTop="@drawable/cadastros_b"
+        android:paddingTop="10dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:text="Cadastros Gerais"
+        android:textColor="#1B508C"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@id/config_ServidorEmails"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/config_ServidorEmails"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:drawableTop="@drawable/servidor_b"
+        android:paddingTop="10dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:text="Servidor de E-mail"
+        android:textColor="#1B508C"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/config_cadastrosGerais"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/config_MensagemAgradecimento"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableTop="@drawable/mensagem_b"
+        android:paddingTop="10dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:text="Mensagem de Agradecimento"
+        android:textColor="#1B508C"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/config_cadastrosGerais"
+        app:layout_constraintStart_toStartOf="@+id/config_cadastrosGerais"
+        app:layout_constraintTop_toBottomOf="@id/config_cadastrosGerais" />
+
+    <Button
+        android:id="@+id/config_EmailsEquipe"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableTop="@drawable/equipe_b"
+        android:paddingTop="10dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:text="E-mails da equipe"
+        android:textColor="#1B508C"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/config_ServidorEmails"
+        app:layout_constraintStart_toStartOf="@+id/config_ServidorEmails"
+        app:layout_constraintTop_toBottomOf="@id/config_ServidorEmails" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

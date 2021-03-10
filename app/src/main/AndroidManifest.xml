@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cadastrodevisita">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".VisitaApplication"
@@ -13,24 +16,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroDeVisita">
-        <activity android:name=".ui.activities.MainActivity">
+        <activity android:name=".cadastro.unidade.Cadastro_Unidade"></activity>
+        <activity android:name=".cadastro.mensagem.Cadastro_Mensagem" />
+        <activity android:name=".ui.activities.Indicadores" />
+        <activity android:name=".cadastro.email.Cadastro_Emails_Equipe" />
+        <activity android:name=".cadastro.categoria.Cadastro_Categoria" />
+        <activity android:name=".cadastro.mensagem.TelaCadastro_Mensagem" />
+        <activity android:name=".cadastro.servidorEmail.TelaCadastro_ServidorEmail" />
+        <activity android:name=".cadastro.servidorEmail.Cadastro_ServidorEmail" />
+        <activity android:name=".ui.activities.PesquisaVisitas" />
+        <activity android:name=".ui.activities.CadastrosGerais" />
+        <activity android:name=".ui.activities.Configuracoes" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.Activity_Informar_Atendimento" />
-        <activity android:name=".cadastro.Cadastro_Situacao" />
-        <activity android:name=".cadastro.Cadastro_Visita"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name=".cadastro.Cadastro_Como_Nos_Conheceu" />
-        <activity android:name=".cadastro.Cadastro_Tipo_Atendimento" />
-        <activity android:name=".cadastro.Cadastro_Colaborador" />
-        <activity android:name=".cadastro.Cadastro_Unidade" />
-        <activity android:name=".cadastro.Cadastro_Turno" />
-        <activity android:name=".cadastro.Cadastro_Turma" />
-        <activity android:name=".cadastro.Cadastro_Secretaria" />
+        <activity android:name=".cadastro.situacao.Cadastro_Situacao" />
+        <activity
+            android:name=".cadastro.Cadastro_Visita"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".cadastro.comoNosConheceu.Cadastro_ComoNosConheceu" />
+        <activity android:name=".cadastro.tipoAtendimento.Cadastro_TipoAtendimento" />
+        <activity android:name=".cadastro.colaborador.Cadastro_Colaborador" />
+        <activity android:name=".cadastro.unidade.TelaCadastro_Unidade" />
+        <activity android:name=".cadastro.turno.Cadastro_Turno" />
+        <activity android:name=".cadastro.turma.Cadastro_Turma" />
+        <activity android:name=".cadastro.secretaria.Cadastro_Secretaria" />
     </application>
 
 </manifest>

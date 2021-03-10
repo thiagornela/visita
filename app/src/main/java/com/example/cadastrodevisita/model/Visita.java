@@ -28,11 +28,12 @@ public class Visita implements Parcelable {
     private String telefone_celular_responsavel_2;
     private String email_responsavel_2;
     private String unidade;
-    private String secrearia;
+    private String secretaria;
     private String tipoAtendimento;
     private String colaborador;
     private String comoNosConheceu;
     private String situacao;
+    private String categoria;
     private String dataAgendada;
     private String observacao;
     private String dataCadastro;
@@ -45,7 +46,6 @@ public class Visita implements Parcelable {
 
     protected Visita(Parcel in) {
         id = in.readInt();
-        //foto_familia = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
         foto_familia = in.readParcelable(Bitmap.class.getClassLoader());
         nome_crianca = in.readString();
         dataNascimento_crianca = in.readString();
@@ -67,11 +67,12 @@ public class Visita implements Parcelable {
         telefone_celular_responsavel_2 = in.readString();
         email_responsavel_2 = in.readString();
         unidade = in.readString();
-        secrearia = in.readString();
+        secretaria = in.readString();
         tipoAtendimento = in.readString();
         colaborador = in.readString();
         comoNosConheceu = in.readString();
         situacao = in.readString();
+        categoria = in.readString();
         dataAgendada = in.readString();
         observacao = in.readString();
         dataCadastro = in.readString();
@@ -83,7 +84,6 @@ public class Visita implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        //dest.writeValue(foto_familia);
         dest.writeParcelable(foto_familia, flags);
         dest.writeString(nome_crianca);
         dest.writeString(dataNascimento_crianca);
@@ -105,11 +105,12 @@ public class Visita implements Parcelable {
         dest.writeString(telefone_celular_responsavel_2);
         dest.writeString(email_responsavel_2);
         dest.writeString(unidade);
-        dest.writeString(secrearia);
+        dest.writeString(secretaria);
         dest.writeString(tipoAtendimento);
         dest.writeString(colaborador);
         dest.writeString(comoNosConheceu);
         dest.writeString(situacao);
+        dest.writeString(categoria);
         dest.writeString(dataAgendada);
         dest.writeString(observacao);
         //dest.writeString(dataCadastro);
@@ -257,12 +258,12 @@ public class Visita implements Parcelable {
         return id > 0;
     }
 
-    public String getSecrearia() {
-        return secrearia;
+    public String getSecretaria() {
+        return secretaria;
     }
 
-    public void setSecrearia(String secrearia) {
-        this.secrearia = secrearia;
+    public void setSecretaria(String secretaria) {
+        this.secretaria = secretaria;
     }
 
     public String getTipoAtendimento() {
@@ -307,6 +308,14 @@ public class Visita implements Parcelable {
 
     public String getNome_irmao() {
         return nome_irmao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public void setNome_irmao(String nome_irmao) {

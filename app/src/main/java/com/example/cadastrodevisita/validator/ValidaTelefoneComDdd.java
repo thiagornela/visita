@@ -3,9 +3,10 @@ package com.example.cadastrodevisita.validator;
 import com.example.cadastrodevisita.formatter.FormataTelefoneComDdd;
 import com.google.android.material.textfield.TextInputLayout;
 
+import static com.example.cadastrodevisita.ui.Constantes.DEVE_TER_10_OU_11_DIGITOS;
+
 public class ValidaTelefoneComDdd implements Validador {
 
-    public static final String DEVE_TER_10_OU_11_DIGITOS = "Telefone deve ter 10 ou 11 dígitos";
     private final TextInputLayout textInputTelefoneComDdd;
     private final FormataTelefoneComDdd formatador = new FormataTelefoneComDdd();
 
@@ -25,7 +26,6 @@ public class ValidaTelefoneComDdd implements Validador {
             return false;
         }
     }
-
 
     @Override
     public boolean estaValido() {

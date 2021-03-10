@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F4F6"
+    tools:context=".ui.activities.CadastrosGerais">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/config_cadastra_comoNosConheceu"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="24dp"
+                android:drawableTop="@drawable/como_nos_conheceu"
+                android:paddingTop="10dp"
+                android:text="Como nos conheceu"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toEndOf="@+id/config_cadastra_categoria"
+                app:layout_constraintTop_toTopOf="@+id/config_cadastra_categoria" />
+
+            <Button
+                android:id="@+id/config_cadastra_EmailsEquipe"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:drawableTop="@drawable/situacoes"
+                android:paddingTop="10dp"
+                android:text="Situações"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_colaborador"
+                app:layout_constraintTop_toBottomOf="@+id/config_cadastra_colaborador" />
+
+            <Button
+                android:id="@+id/config_cadastra_turno"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:drawableTop="@drawable/turno"
+                android:paddingTop="10dp"
+                android:text="Turno"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_tipo_atendimento"
+                app:layout_constraintTop_toBottomOf="@+id/config_cadastra_tipo_atendimento" />
+
+            <Button
+                android:id="@+id/config_cadastra_colaborador"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:drawableTop="@drawable/funcionarios"
+                android:paddingTop="10dp"
+                android:text="Funcionários"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_categoria"
+                app:layout_constraintTop_toBottomOf="@+id/config_cadastra_categoria" />
+
+            <Button
+                android:id="@+id/config_cadastra_turma"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:drawableTop="@drawable/turma"
+                android:paddingTop="10dp"
+                android:text="Turma"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_EmailsEquipe"
+                app:layout_constraintTop_toBottomOf="@+id/config_cadastra_EmailsEquipe" />
+
+            <Button
+                android:id="@+id/config_cadastra_secretaria"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:drawableTop="@drawable/secretarias"
+                android:paddingTop="10dp"
+                android:text="Secretárias"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_comoNosConheceu"
+                app:layout_constraintTop_toTopOf="@+id/config_cadastra_colaborador" />
+
+            <Button
+                android:id="@+id/config_cadastra_categoria"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:drawableTop="@drawable/secretarias"
+                android:paddingTop="10dp"
+                android:text="Categorias"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/config_cadastra_tipo_atendimento"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:drawableTop="@drawable/tipo_atendimento"
+                android:paddingTop="10dp"
+                android:text="Tipo de atendimento"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_secretaria"
+                app:layout_constraintTop_toTopOf="@+id/config_cadastra_EmailsEquipe" />
+
+            <Button
+                android:id="@+id/config_cadastra_unidade"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:drawableTop="@drawable/unidade"
+                android:paddingTop="10dp"
+                android:text="Unidade"
+                android:textColor="#1B508C"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/config_cadastra_turma"
+                app:layout_constraintTop_toBottomOf="@+id/config_cadastra_turma" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class VisitaDAO {
     }
 
     @Nullable
-    private static Visita buscaVisitaPeloId(Visita visita) {
+    public static Visita buscaVisitaPeloId(Visita visita) {
         for (Visita a :
                 visitas) {
             if (a.getId() == visita.getId()) {

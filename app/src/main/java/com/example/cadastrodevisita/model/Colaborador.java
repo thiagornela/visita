@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Colaborador  implements Serializable {
 
     private String colaborador;
+    private String unidade;
     private int id = 0;
 
     public Colaborador() {
@@ -13,6 +14,16 @@ public class Colaborador  implements Serializable {
 
     public Colaborador(String colaborador) {
         this.colaborador = colaborador;
+    }
+
+    public Colaborador(int id, String colaborador, String unidade) {
+        this.colaborador = colaborador;
+        this.unidade = unidade;
+        this.id = id;
+    }
+
+    public String getUnidade() {
+        return unidade;
     }
 
     public String getColaborador() {

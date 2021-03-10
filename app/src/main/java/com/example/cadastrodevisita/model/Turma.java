@@ -7,6 +7,7 @@ public class Turma implements Serializable {
 
     private String turma;
     private int id = 0;
+    private String unidade;
 
     public Turma() {
         this.turma = turma;
@@ -14,6 +15,16 @@ public class Turma implements Serializable {
 
     public Turma(String turma) {
         this.turma = turma;
+    }
+
+    public Turma(int id, String turma, String unidade) {
+        this.turma = turma;
+        this.unidade = unidade;
+        this.id = id;
+    }
+
+    public String getUnidade() {
+        return unidade;
     }
 
     public String getTurma() {

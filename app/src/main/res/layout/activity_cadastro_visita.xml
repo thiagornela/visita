@@ -201,7 +201,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/formulario_data_nascimento_crianca">
 
                         <AutoCompleteTextView
-                            android:id="@+id/spinner_Turma_crianca"
+                            android:id="@+id/spinner_dialog_unidade"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
@@ -904,6 +904,30 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/formulario_categoria"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColorHint="#1B508C"
+                        android:textSize="18sp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxStrokeColor="#1B508C"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_situacao" >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinner_categoria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:hint="Categoria" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/formulario_Motivo_Matriculou_OutraEscola"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
@@ -917,7 +941,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/titulo_dados_gerais"
-                        app:layout_constraintTop_toBottomOf="@+id/formulario_situacao" >
+                        app:layout_constraintTop_toBottomOf="@+id/formulario_categoria" >
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"

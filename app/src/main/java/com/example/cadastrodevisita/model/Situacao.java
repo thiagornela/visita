@@ -6,6 +6,7 @@ public class Situacao  implements Serializable {
 
     private String situacao;
     private int id = 0;
+    private String unidade;
 
     public Situacao() {
         this.situacao = situacao;
@@ -13,6 +14,16 @@ public class Situacao  implements Serializable {
 
     public Situacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public Situacao(int id, String situacao, String unidade) {
+        this.situacao = situacao;
+        this.unidade = unidade;
+        this.id = id;
+    }
+
+    public String getUnidade() {
+        return unidade;
     }
 
     public String getSituacao() {

@@ -1,5 +1,8 @@
 package com.example.cadastrodevisita.dao;
 
+import androidx.annotation.Nullable;
+
+import com.example.cadastrodevisita.model.ComoNosConheceu;
 import com.example.cadastrodevisita.model.ComoNosConheceu;
 
 import java.util.ArrayList;
@@ -15,6 +18,14 @@ public class ComoNosConheceuDAO {
         comoNosConheceu_List.add(comoNosConheceu);
         atualizaIds();
     }
+    
+    public void edita(ComoNosConheceu comoNosConheceu) {
+        ComoNosConheceu comoNosConheceuEncontrada = buscaPeloId(comoNosConheceu);
+        if (comoNosConheceuEncontrada != null) {
+            int posicao = comoNosConheceu_List.indexOf(comoNosConheceuEncontrada);
+            comoNosConheceu_List.set(posicao, comoNosConheceu);
+        }
+    }
 
     private void atualizaIds() {
         contadorDeIds++;
@@ -22,5 +33,27 @@ public class ComoNosConheceuDAO {
 
     public List<ComoNosConheceu> todos() {
         return new ArrayList<>(comoNosConheceu_List);
+    }
+
+    public void remove(ComoNosConheceu comoNosConheceu) {
+        ComoNosConheceu comoNosConheceuDevolvida = buscaPeloId(comoNosConheceu);
+        if(comoNosConheceuDevolvida != null){
+            comoNosConheceu_List.remove(comoNosConheceuDevolvida);
+        }
+    }
+
+    public void removeComPosicao(int posicao) {
+        comoNosConheceu_List.remove(posicao);
+    }
+
+    @Nullable
+    private ComoNosConheceu buscaPeloId(ComoNosConheceu comoNosConheceu) {
+        for (ComoNosConheceu a :
+                comoNosConheceu_List) {
+            if (a.getId() == comoNosConheceu.getId()) {
+                return a;
+            }
+        }
+        return null;
     }
 }

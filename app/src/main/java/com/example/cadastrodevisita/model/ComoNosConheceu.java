@@ -6,6 +6,7 @@ public class ComoNosConheceu  implements Serializable {
 
     private String comoNosConheceu;
     private int id = 0;
+    private String unidade;
 
     public ComoNosConheceu() {
         this.comoNosConheceu = comoNosConheceu;
@@ -13,6 +14,16 @@ public class ComoNosConheceu  implements Serializable {
 
     public ComoNosConheceu(String comoNosConheceu) {
         this.comoNosConheceu = comoNosConheceu;
+    }
+
+    public ComoNosConheceu(int id, String comoNosConheceu, String unidade) {
+        this.comoNosConheceu = comoNosConheceu;
+        this.unidade = unidade;
+        this.id = id;
+    }
+
+    public String getUnidade() {
+        return unidade;
     }
 
     public String getComoNosConheceu() {
