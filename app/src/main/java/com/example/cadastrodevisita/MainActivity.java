@@ -25,6 +25,7 @@ import com.example.cadastrodevisita.model.Unidade;
 import com.example.cadastrodevisita.ui.activities.Configuracoes;
 import com.example.cadastrodevisita.ui.activities.Indicadores;
 import com.example.cadastrodevisita.ui.activities.PesquisaVisitas;
+import com.example.cadastrodevisita.ui.activities.Relatorios;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static com.example.cadastrodevisita.ui.Constantes.SITUACAO_AMBIENTACAO_PARA;
@@ -66,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void configuraFabs() {
         fab_geral.setOnClickListener(v -> fabGeralClicado());
-        fab_adiciona_visita.setOnClickListener(v -> fab_adiciona_visita.setOnClickListener(v1 -> vaiParaCadastroVisita()));
         fab_configuracoes.setOnClickListener(v -> fab_configuracoes.setOnClickListener(v1 -> vaiparaConfiguracoes()));
-        fab_PesquisaVisitas.setOnClickListener(v -> fab_PesquisaVisitas.setOnClickListener(v1 -> vaiparaPesquisaVisitas()));
+        fab_relatorios.setOnClickListener(v -> fab_relatorios.setOnClickListener(v1 -> vaiParaRelatorios()));
         fab_indicadores.setOnClickListener(v -> fab_indicadores.setOnClickListener(v1 -> vaiparaIndicadores()));
+        fab_PesquisaVisitas.setOnClickListener(v -> fab_PesquisaVisitas.setOnClickListener(v1 -> vaiparaPesquisaVisitas()));
+        fab_adiciona_visita.setOnClickListener(v -> fab_adiciona_visita.setOnClickListener(v1 -> vaiParaCadastroVisita()));
     }
 
     private void botoesPesquisar() {
@@ -103,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapterSituacao.add(SITUACAO_AMBIENTACAO_PARA);
         spinner_filtro_situacao.setAdapter(arrayAdapterSituacao);
 
-        fab_PesquisaVisitas = findViewById(R.id.fab_visitas);
-        fab_indicadores = findViewById(R.id.fab_indicadores);
         fab_configuracoes = findViewById(R.id.fab_configuracoes);
-        fab_geral = findViewById(R.id.fab_geral);
         fab_relatorios = findViewById(R.id.fab_relatorios);
+        fab_indicadores = findViewById(R.id.fab_indicadores);
+        fab_PesquisaVisitas = findViewById(R.id.fab_visitas);
         fab_adiciona_visita = findViewById(R.id.fab_adiciona_visita);
+        fab_geral = findViewById(R.id.fab_geral);
 
         buttonPesquisar = findViewById(R.id.button_pesquisar_adapter);
         buttonLimparPesquisa = findViewById(R.id.button_limpar_adapter);
@@ -189,13 +191,18 @@ public class MainActivity extends AppCompatActivity {
         listaVisitasView.configuraAdapter(listaDeVisitas);
 
     }
-    private void vaiParaCadastroVisita() {
-        Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
+    private void vaiparaConfiguracoes() {
+        Intent intent = new Intent(MainActivity.this, Configuracoes.class);
         startActivity(intent);
     }
 
-    private void vaiparaConfiguracoes() {
-        Intent intent = new Intent(MainActivity.this, Configuracoes.class);
+    private void vaiParaRelatorios() {
+        Intent intent = new Intent(MainActivity.this, Relatorios.class);
+        startActivity(intent);
+    }
+
+    private void vaiparaIndicadores() {
+        Intent intent = new Intent(MainActivity.this, Indicadores.class);
         startActivity(intent);
     }
 
@@ -204,8 +211,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void vaiparaIndicadores() {
-        Intent intent = new Intent(MainActivity.this, Indicadores.class);
+    private void vaiParaCadastroVisita() {
+        Intent intent = new Intent(MainActivity.this, Cadastro_Visita.class);
         startActivity(intent);
     }
 }

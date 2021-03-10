@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroDeVisita">
-        <activity android:name=".cadastro.unidade.Cadastro_Unidade"></activity>
+        <activity android:name=".ui.activities.Relatorios"></activity>
+        <activity android:name=".cadastro.unidade.Cadastro_Unidade" />
         <activity android:name=".cadastro.mensagem.Cadastro_Mensagem" />
         <activity android:name=".ui.activities.Indicadores" />
         <activity android:name=".cadastro.email.Cadastro_Emails_Equipe" />
